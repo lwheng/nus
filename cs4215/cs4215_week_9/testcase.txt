@@ -1,0 +1,42 @@
+1. (fun x -> x * (let x = 1 in 1 + x end) end 2)
+-> 4
+ 
+2. (fun x -> (fun x -> x end x + 1) + x end 5)
+-> 11
+ 
+3. (fun x -> let i = 1 in let f = 1 in while \ i > x do f := f * i; i := i + 1 end; f end end end 3)
+-> 6
+ 
+4. let x = 0 in x := 1; x := x + 2; x:= x + 3; x end
+-> 6
+ 
+5. let gcd = fun a b -> while \(a = b) do if a > b then a := a - b else b := b - a end end; a end in (gcd 6 10) end
+-> 2
+ 
+6. (recfun power x y -> if y = 0 then 1 else x * (power x y - 1) end end 17 3)
+4913
+ 
+7. let x = 1 in x + (fun x -> x + x end 2) end
+-> 5
+ 
+8. let x = 1 in x + (fun y -> y + x end 2) end
+-> 4
+ 
+9. (fun f -> (f 2) end fun x -> x + 1 end)
+-> 3
+ 
+10. let recurse = recfun recurse x y operation initvalue -> if y = 0 then initvalue else (operation x (recurse x y - 1 operation initvalue)) end end 
+in
+(recurse 2 3 (fun x z -> z * x end) 1)
+end
+-> 8
+
+11. 
+(recfun fib x -> if x < 2 then x else (fib x - 1) + (fib x - 2) end end 6)
+-> 8
+ 
+12.
+let previous = -1 result = 1 sum = 0 init = 0
+fib = fun n ->  while \ init > n do init := init + 1;  sum := result + previous; previous := result; result := sum end; result end
+in (fib 6) end
+-> 8

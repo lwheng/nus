@@ -1,0 +1,2 @@
+(fun {int -> int} x -> x * x end 3)
+

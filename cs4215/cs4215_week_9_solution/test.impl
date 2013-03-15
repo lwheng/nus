@@ -1,0 +1,7 @@
+let r = [a:10, b:30]
+in
+	let f = fun x -> x.a := 30; x.a * r.a end
+	in
+		(f r) + r.a
+	end
+end

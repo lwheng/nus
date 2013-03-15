@@ -1,0 +1,174 @@
+\title{CS4248 Assignment 2\\Parts-of-Speech Tagger}
+\author{Heng Low Wee (U096901R)}
+\date{}
+\documentclass[12pt]{article}
+	\addtolength{\oddsidemargin}{-.875in}
+	\addtolength{\evensidemargin}{-.875in}
+	\addtolength{\textwidth}{1.75in}
+	\addtolength{\topmargin}{-1in}
+	\addtolength{\textheight}{1.75in}
+\usepackage[compact]{titlesec}
+\usepackage{url}
+%\titlespacing{\section}{0pt}{*0}{*0}
+%\titlespacing{\subsection}{0pt}{*0}{*0}
+%\titlespacing{\subsubsection}{0pt}{*0}{*0}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+\paragraph{}
+In this assignment, we build a Parts-of-Speech (POS) tagger, using training data from part of the Penn Treebank. Specifically, we implement a POS bigram tagger based on a hidden Markov model (HMM), and the optimal sequence of the most probable tags is computed using the Viterbi algorithm.
+
+\paragraph{}
+In this report, we discuss our approach on implementing this POS tagger in Java. We discuss the various parameters captured as we trained our model required to make the predictions, how we performed smoothing and how we handled unseen words by the model.
+
+\section{Methodology}
+\subsection{Training Dataset}
+\paragraph{}
+The training dataset we are using, \url{sents.train}, is training data from part of the Penn Treebank. Each word in each line of training set is annotated with a POS tag from the Penn Treebank. Table \ref{tab:sents_train} summarises some information about the training set.
+
+\begin{table}[h]
+	\center
+	\begin{tabular}{ l l }
+		\textsc{Item} & \textsc{Statistics}\\
+		\hline
+		Vocab Size, $|V|$ & 44366 \\
+		No. of annotated sentences & 39832 \\
+		No. of unique POS Tags used & 45 \\
+	\end{tabular}
+	\caption{Information about sents.train}
+	\label{tab:sents_train}
+\end{table}
+
+\subsection{Building The Model}
+\paragraph{}
+In order to implement our POS bigram tagger, we first identified the key parameters needed for a HMM to function. These parameters are also used in the Viterbi algorithm. These parameters are:
+\begin{enumerate}
+\item $V$ : The set of all words in training set
+\item $S$ : The set of POS tags in training set
+\item $P(s_i|s_{i-1})$ : The transition probability from a POS tag to another e.g. $P(s_2 | s_{1}),~s_i \in S$.
+\item $P(w|s)$ : The probability of having a word, $w$, given a POS tag, $s$.
+\end{enumerate}
+
+\paragraph{}
+Once we identified the parameters needed for the HMM, we proceeded to extract information from our training set. Table \ref{tab:info} lists the information we extracted from \url{sents.train}.
+
+\begin{table}[h]
+	\center
+	\begin{tabular}{ l p{10cm}}
+		\textsc{Item} & \textsc{Description}\\
+		\hline
+		$V$ & The set of all words in training set \\
+		$S$ & The set of all POS tags in training set \\
+		$M$ & A POS transition matrix that captures the count of transitions i.e. $M[i,j] = C(s_i \rightarrow s_j)$\\
+		$D$ & A hash that captures of the distribution of words for all tags\\
+	\end{tabular}
+	\caption{Information extracted from sents.train}
+	\label{tab:info}
+\end{table}
+
+\paragraph{}
+It is important to note that on top of the 45 POS Penn Treebank tags, we added 2 additional special tags, \url{<s>} and \url{</s>} to indicate a sentence's boundary. This 2 special tags are added to $S$ during training.
+
+\paragraph{}
+With $M$, we proceed to generate $M'$, a matrix that captures the transition probability instead of the raw count. For probabilities for transitions that have zero raw count, we performed smoothing, which is further discussed in the following section.
+
+\subsection{Smoothing}
+\paragraph{}
+The smoothing method we employed was the Witten-Bell Smoothing for bigrams. In our tagger, there are two locations that required smoothing.
+
+\paragraph{}
+First, mentioned earlier, smoothing was performed when we generated $M'$, a matrix of POS transition probabilities. We perform smoothing for POS transitions using Equation (\ref{eq1}).
+
+\begin{equation}
+\label{eq1}
+P(s_i | s_{i-1}) = \left\{ 
+					\begin{array}{c l}
+					\displaystyle \frac{C(s_{i-1} s_i)}{C(s_{i-1}) + T(s_{i-1})} & \textrm{if}~C(s_{i-1} s_i) > 0 \\\\
+					\displaystyle \frac{T(s_{i-1})}{Z(s_{i-1}) \cdot (C(s_{i-1}) + T(s_{i-1}))} & \textrm{if}~C(s_{i-1} s_i) = 0
+					\end{array}
+					\right.
+\end{equation}
+where $C(s_{i-1} s_i)$ is the number of transition from $s_{i-1}$ to $s_i$, $C(s_i)$ is the total number of times the tag $s_i$ was seen, $T(s_i)$ is number of seen and unique transitions beginning with $s_i$, $Z(s_i)$ is number of unseen and unique transitions beginning with $s_i$.
+
+\paragraph{}
+Second, we also needed to perform smoothing when we compute for $P(w|s)$: probability of a word $w$ given a tag $s$. This is also how we handle unknown (unseen by the model) words in test sentences. In other words, all unknown words are treated equally, with respect to the given tag, in our smoothing implementation.
+\begin{equation}
+\label{eq2}
+P(w | s) = \left\{ 
+					\begin{array}{c l}
+					\displaystyle \frac{C(s, w)}{C(s) + T(s)} & \textrm{if}~C(s, w) > 0 \\\\
+					\displaystyle \frac{T(s)}{Z(s) \cdot (C(s) + T(s))} & \textrm{if}~C(s, w) = 0
+					\end{array}
+					\right.
+\end{equation}
+where $C(s,w)$ is the number of times $w$ was tagged $s$, $C(s)$ is the total count of all seen words given tag $s$, $T(s)$ is the count of unique words seen given tag $s$, $Z(s)$ is the count of unique words unseen given tag $s$. So $T(s) + Z(s) = V$.
+
+\subsection{Implementation}
+\paragraph{}
+Once we built our model, we were ready to implement the tagger using the Viterbi algorithm. In our implementation, there are 2 main differences from the algorithm mentioned in the lecture slides worth taking note.
+
+\paragraph{}
+First, instead of creating of matrix of size $N$+2 by $T$ ($N$ = no. of POS Tags, $T$ = no. of tokens in test sentence), we created one of size $N$ by $T$ instead. So in the Init and Termination stage, the transition probabilities were computed using the special tags we added: \url{<s>} and \url{</s>}.
+
+\paragraph{}
+Second, which is also a solution to one technical difficulty we encountered, is that we used $\log{n}$ instead of $n$, where $n$ is the probability values from $P(s_{i}|s_{i-1})$ and $P(w|s)$. The reason we applied logarithms to the probability values is because these values were very small (e.g. $10^{-20}$), and the product of these values is a value too small, and was treated as zero by the machine.
+
+\section{Evaluation}
+\paragraph{}
+We validate our POS tagger by performing 10-fold cross validation on our training data. We divide the training data into 10 parts, and for each fold we train on 9 parts and test on 1 part, alternating that testing part ten times to obtain ten sets of results.
+
+\paragraph{}
+For each fold, we evaluate our POS tagger by computing the Precision ($P$), Recall ($R$) and F-score ($F$) values. Here's how we computed the values. First, we compute the $P/R/F$ values for \textit{each} POS tag. In other words for each fold, we have 45 sets of $P/R/F$ values, one for each tag. The $P/R/F$ values for that fold is computed by taking the average of the 45 sets of values. See Table \ref{tab:tenfold} for the results.
+
+\begin{table}[h]
+	\center
+	\begin{tabular}{ c  c  c  c}
+		\textsc{$n$-th fold} & \textsc{Precision $P$} & \textsc{Recall $R$} & \textsc{F-Score $F$} \\
+		\hline
+		1 & .862 & .856 & .882\\
+		2 & .861 & .915 & .891\\
+		3 & .879 & .884 & .898\\
+		4 & .895 & .916 & .910\\
+		5 & .902 & .885 & .883\\
+		6 & .891 & .906 & .905\\
+		7 & .866 & .896 & .875\\
+		8 & .863 & .885 & .887\\
+		9 & .864 & .910 & .893\\
+		10 & .891 & .911 & .894\\
+		Average & .877 & .896 & .892
+	\end{tabular}
+	\caption{$P/R/F$ values from 10-fold cross validation}
+	\label{tab:tenfold}
+\end{table}
+
+\newpage
+\section{Discussion}
+\paragraph{}
+When tested on \url{sents.devt} we found there are a few tags that have significantly lower $P/R/F$ values. They are:
+
+\begin{table}[h]
+	\center
+	\begin{tabular}{ c  c  c  c}
+		\textsc{Tag} & \textsc{Precision $P$} & \textsc{Recall $R$} & \textsc{F-Score $F$} \\
+		\hline
+		NNPS & .797 & .680 & .734\\
+		RBR & .429 & .706 & .533\\
+	\end{tabular}
+	\caption{$P/R/F$ values for selected tags}
+	\label{tab:tenfold}
+\end{table}
+
+\paragraph{}
+Upon comparing the annotation with the predicted tags, we came up with the following analysis:
+\begin{enumerate}
+\item NNPS: The predictions tend to be NNP instead. The model was unable to differentiate singular versus plural proper nouns. This could be due the fact all unknown words are treated equally in our smoothing implementations. One possible solution is to assigned a higher probability for proper nouns ending with an ``s".
+\item RBR: Confused with JJR. Since both tags are comparative, one possible solution could be to perform word stemming, which could better allow us determine whether the word stem is an adjective or an adverb.
+\end{enumerate}
+
+\vfill
+\begin{center}
+\url{https://github.com/lwheng/cs4248}
+\end{center}
+\end{document}

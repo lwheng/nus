@@ -1,0 +1,1 @@
+(recfun mypower {(int * int -> int)}  x y -> if (y = 0) then (fun {bool -> int} x -> 1 end (true | false)) else (x * (mypower  x (y - 1))) end end 17 3)

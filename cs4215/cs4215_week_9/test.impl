@@ -1,0 +1,9 @@
+let g = recfun f x ->
+	if x=0 then (f 1)
+	else f := fun x -> 7 end;
+	8
+	end
+	end
+in
+	(g 1) + (g 0)
+end

@@ -1,0 +1,1 @@
+removeDuplicates l = foldl (\x y -> if ((last x) == y) then x else x++[y]) [head l] l

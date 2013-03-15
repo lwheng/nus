@@ -1,0 +1,150 @@
+\title{CS4248 Assignment 3}
+\author{Heng Low Wee (U096901R)}
+\date{}
+\documentclass[fleqn,11pt]{article}
+\usepackage[lmargin=0.5in,rmargin=0.5in,tmargin=0.5in,bmargin=0.5in]{geometry}
+\usepackage[compact]{titlesec}
+\usepackage{url}
+\usepackage{amssymb,amsmath,amstext,amsgen,amsbsy,amsopn,amsfonts,mathabx,graphicx,graphics,overcite,theorem,anysize,multicol}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage{algorithm,algorithmic}
+
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item (Refer to algorithm at the end)
+
+\item Input: ``love stops" \\
+\begin{tabular}{l l l l l}
+Chart[0]: & \\
+\checkmark		&		S0		&		$\gamma \rightarrow \bullet$ S		&		[0,0]		&		Dummy start state \\
+\checkmark		&		S1		&		S $\rightarrow \bullet$ N VP		&		[0,0]		&		Predictor \\
+\checkmark		&		S2		&		S $\rightarrow \bullet$ VP			&		[0,0]		&		Predictor \\
+\checkmark		&		S3		&		VP $\rightarrow \bullet$ V			&		[0,0]		&		Predictor \\
+\checkmark		&		S4		&		VP $\rightarrow \bullet$ V N		&		[0,0]		&		Predictor \\
+Chart[1]: & \\
+\checkmark		&		S5		&		N $\rightarrow$ love $\bullet$		&		[0,1]		&		Scanner \\
+\checkmark		&		S6		&		V $\rightarrow$ love $\bullet$		&		[0,1]		&		Scanner \\
+\checkmark		&		S7		&		S $\rightarrow$ N $\bullet$ VP		&		[0,1]		&		Completer (S5) \\
+\checkmark		&		S8		&		VP $\rightarrow$ V $\bullet$		&		[0,1]		&		Completer (S6) \\
+\checkmark		&		S9		&		VP $\rightarrow$ V $\bullet$ N		&		[0,1]		&		Completer (S6) \\
+\checkmark		&		S10		&		VP $\rightarrow \bullet$ V			&		[1,1]		&		Predictor \\
+\checkmark		&		S11		&		VP $\rightarrow \bullet$ V N		&		[1,1]		&		Predictor \\
+\checkmark		&		S12		&		S $\rightarrow$ VP $\bullet$		&		[1,1]		&		Completer (S8) \\
+\checkmark		&		S13		&		$\gamma$ $\rightarrow$ S $\bullet$&		[1,1]		&		Completer (S12) \\
+Chart[2]: & \\
+\checkmark		&		S14		&		N $\rightarrow$ stops $\bullet$	&		[1,2]		&		Scanner \\
+\checkmark		&		S15		&		V $\rightarrow$ stops $\bullet$	&		[1,2]		&		Scanner \\
+\checkmark		&		S16		&		VP $\rightarrow$ V N $\bullet$		&		[1,2]		&		Completer (S14) \\
+\checkmark		&		S17		&		VP $\rightarrow$ V $\bullet$		&		[1,2]		&		Completer (S15) \\
+\checkmark		&		S18		&		VP $\rightarrow$ V $\bullet$ N		&		[1,2]		&		Completer (S15) \\	
+\checkmark		&		S19		&		S $\rightarrow$ VP $\bullet$		&		[1,2]		&		Completer (S16) \\
+\checkmark		&		S20		&		S $\rightarrow$ N VP $\bullet$		&		[1,2]		&		Completer (S16) \\
+\checkmark		&		S21		&		$\gamma \rightarrow$ S $\bullet$	&		[1,2]		&		Completer (S19) \\
+\checkmark		&		S22		&		$\gamma \rightarrow$ S $\bullet$	&		[1,2]		&		Completer (S20) \\		
+\end{tabular}
+\begin{center}
+\Tree [.S [.VP [.V [.love ] ] [.N [.stops ] ] ] ]
+\end{center}
+\begin{center}
+\Tree [.S [.N [.love ] ] [.VP [.V [.stops ] ] ] ]
+\end{center}
+
+\item The conventional CKY algorithm has time complexity of $O(n^3)$. To go through each item in the table takes $n^2$, and for each item checking through all the sub-trees takes $n$. Now that we consider probabilistic CKY, for each sub-tree there are multiple ways of parsing them, each with its own probability value. If we consider the worst case, there is an additional $|G|$ steps, where $G$ is the grammar. Thus, time complexity is $O(|G| \cdot n^3)$.
+
+\item Sentence in consideration: ``Flying helicopters can be hazardous." \\
+\begin{center}
+\Tree [.helicopter [.Flying ] [.can [.be [.hazardous ] ] ] ]
+\end{center}
+In this interpretation, ``Flying" modifies ``helicopter". It describes a third-person perspective and means helicopters that are flying are hazardous.
+\begin{center}
+\Tree [.Flying [.helicopters ] [.can [.be [.hazardous ] ] ] ]
+\end{center}
+In this interpretation, ``Flying" is a verb. It describes a first-person perspective and means the act of piloting helicopters can be hazardous
+\end{enumerate}
+
+\begin{algorithm}
+\begin{algorithmic}
+	\STATE $R$: Regex
+	\STATE $G_t$: Grammar
+	\STATE $A_{prev}$: Previous symbol or $S$ (First call)
+	\IF {$R$ is terminal symbol}
+		\STATE $G_t$.add($A_{prev} \rightarrow R$)
+		\RETURN $G_t$
+	\ELSIF {$R$ in form of ($r$)}
+		\STATE Generate new non-terminal symbol, $A_{new}$
+		\STATE $G_t$.add($A_{prev} \rightarrow A_{new}$)
+		\RETURN convertRegexToCFG($r$, $G_t$, $A_{new}$)
+	\ELSIF {$R$ in form of $r$+ }
+		\RETURN convertRegexToCFG($rr$*, $G_t$, $A_{new}$)
+	\ELSIF {$R$ in form of $r$*}
+		\STATE Generate new non-terminal symbol, $A_{new}$
+		\STATE $G_t$.add($A_{prev} \rightarrow A_{prev} A_{new}$)
+		\STATE $G_t$.add($A_{prev} \rightarrow \epsilon$)
+		\RETURN convertRegexToCFG($r$, $G_t$, $A_{new}$)
+	\ELSIF {$R$ in form of $r$?}
+		\STATE Generate new non-terminal symbol, $A_{new}$
+		\STATE $G_t$.add($A_{prev} \rightarrow A_{new}$)
+		\STATE $G_t$.add($A_{prev} \rightarrow \epsilon$)
+		\RETURN convertRegexToCFG($r$, $G_t$, $A_{new}$)
+	\ELSIF {$R$ in form of $r$\{$d$\}}
+		\STATE Generate new non-terminal symbol, $A_{new}$
+		\STATE $A_{temp} \leftarrow null$
+		\FOR {1 to $d$}
+			\STATE $A_{temp}$.append($A_{new}$)
+		\ENDFOR
+		\STATE $G_t$.add($A_{prev} \rightarrow A_{temp}$)
+		\RETURN convertRegexToCFG($r$, $G_t$, $A_{new}$)
+	\ELSIF {$R$ in form of $r$\{$d$,\}}
+		\STATE Generate new non-terminal symbol, $A_{new}$
+		\STATE $A_{temp} \leftarrow null$
+		\FOR {1 to $d$}
+			\STATE $A_{temp}$.append($A_{new}$)
+		\ENDFOR
+		\STATE $G_t$.add($A_{prev} \rightarrow A_{temp}$)
+		\RETURN convertRegexToCFG($r$*, $G_t$, $A_{new}$)
+	\ELSIF {$R$ in form of $r$\{$d_1$,$d_2$\}}
+		\STATE Generate new non-terminal symbol, $A_{new}$
+		\FOR {$d_i$ in $d_1$ to $d_2$}
+			\STATE convertRegexToCFG($r\{d_i\}$, $G_t$, $A_{new}$)
+		\ENDFOR
+	\ELSIF {$R$ in form of $r_1$ $|$ $r_2$}
+		\STATE Generate 2 new non-terminal symbols, $A$ and $B$
+		\STATE $G_t$.add($A_{prev} \rightarrow A$)
+		\STATE $G_t$.add($A_{prev} \rightarrow B$)
+		\RETURN convertRegexToCFG($r_2$, convertRegexToCFG($r_1$, $G_t$, $A$), $B$)
+	\ELSIF {$R$ in form of $r_1r_2$}
+		\STATE Generate 2 new non-terminal symbols, $A$ and $B$
+		\STATE $G_t$.add($A_{prev} \rightarrow A$)
+		\STATE $G_t$.add($A_{prev} \rightarrow B$)
+		\RETURN convertRegexToCFG($r_2$, convertRegexToCFG($r_1$, $G_t$, $A$), $B$)
+	\ENDIF
+\end{algorithmic}
+\caption{convertRegexToCFG($R$, $G_t$, $A_{prev}$) return $G$}
+\end{algorithm}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

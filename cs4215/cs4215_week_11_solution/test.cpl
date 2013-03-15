@@ -1,0 +1,6 @@
+let x = 3
+in
+	thread x := x + x end;
+	thread x := x + x end;
+	thread print x end
+end

@@ -1,0 +1,414 @@
+\documentclass[10 pt]{article}
+\usepackage{amssymb,amsmath,amstext,amsgen,amsbsy,amsopn,amsfonts,graphicx, overcite,theorem, anysize, multicol, upgreek}
+\usepackage[compact]{titlesec} \titlespacing{\section}{0pt}{*0}{*0} \titlespacing{\subsection}{0pt}{*0}{*0} \titlespacing{\subsubsection}{0pt}{*0}{*0}
+\renewcommand{\baselinestretch}{1.0}
+%\marginsize{0.5in}{0.5in}{0.5in}{0.5in}
+%\marginsize{left}{right}{top}{bottom}
+\usepackage[lmargin=0.1in,rmargin=0.1in,tmargin=0.1in,bmargin=0.1in]{geometry}
+% By default, \columnseprule is 0pt, which means they are invisible, to
+% change:
+\setlength{\columnseprule}{0.1pt}
+
+% If you feel the columns are too close together (default: 10pt), then
+% redefine:
+\setlength{\columnsep}{10pt}
+
+\makeatletter
+\newenvironment{tablehere}
+  {\def\@captype{table}}
+  {}
+
+\newenvironment{figurehere}
+  {\def\@captype{figure}}
+  {}
+\makeatother
+
+\begin{document}
+\begin{multicols}{2}
+\section*{PC1221 Formula Sheet}
+\subsection*{Lecture 1-2: Intro, History and Measurement}
+\subsubsection*{Models of Matter}
+Nuclues has structure, containing protons and neutrons\\
+Atomic Number : No. of protons\\
+Mass Number : Total no. of protons and neutrons
+\subsubsection*{Density}
+$\rho = \frac{m}{V}$\\
+$\rho$ : Density, $m$ : Mass, $V$ : Volume
+\subsubsection*{Atomic Mass}
+$ 1 u = \frac{1g/mole}{N_A} = 1.6605387 \times 10^{-27} kg$\\
+$N_A$ : Avogradro's Constant
+\subsubsection*{Avogradro's Constant}
+$ 6.02 \times 10^{23} $ atoms/mole
+\subsubsection*{Uncertainty in Measurements}
+Operations with Signnificant Figures\\
+$\cdot$ When multiplying or dividing, the number of significant figures in the final is the same as \textbf{the no. of significant figures in the quantity having the \underline{lowest number of significant figures}}\\
+$\cdot$ When adding or subtracting, the number of decimal places in the result should equal \textbf{\underline{the smallest number of decimal places} in any term in the sum}.
+\\
+\line(1,0){290}
+\subsection*{Lecture 3-4: Motion in One Dimension}
+\subsubsection*{Kinematic Equations}
+Similar set of equations:\\
+$v = u + at$\\
+$s = s_0 + \frac{1}{2}(u+v)t$\\
+$s = s_0 + ut + \frac{1}{2}at^2$\\
+$v^2 = u^2 + 2a(s-s_0)$
+\subsubsection*{Free Falling Objects}
+$g = 9.80 m/s^s$ OR $a_y = g = -9.80 m/s^2$\\
+A free falling object is any object moving freely under the influence of gravity alone.
+\\
+\line(1,0){290}
+\subsection*{Lecture 5-6: Vectors}
+\subsubsection*{Vectors and Scalars}
+A \textbf{scalar} quantity is completely specified by a single value with an appropriate unit and has no direction.\\
+A \textbf{vector} quantity is completely described by a number with appropriate units plus a direction.
+\subsubsection*{Component Vectors}
+A vector can be broken down into 2 vectors: x-component ($A_x$) and y-component ($A_y$)
+\subsubsection*{Unit Vectors}
+A \textbf{unit} vector is a dimensionless vector with a magnitude of exactly 1.
+\subsubsection*{Dot Product of 2 Vectors}
+$\vec{A} \bullet \vec{B} = |\vec{A}| \times |\vec{B}| \times \cos{\theta}$\\
+The dot product of vectors is a scalar quantity.
+\subsubsection*{Useful Trigo Stuff}
+\begin{tablehere}
+%\centering
+%\footnotesize
+\begin{tabular} {| c | c | c | c | c | c |}
+\hline
+ & $0^\circ$ & $30^\circ$ & $45^\circ$ & $60^\circ$ & $90^\circ$ \\
+\hline
+$\sin$ & 0 & $\frac{1}{2}$ & $\frac{1}{\sqrt{2}}$ & $\frac{\sqrt{3}}{2}$ & $1$ \\
+\hline
+$\cos$ & 1 & $\frac{\sqrt{3}}{2}$ & $\frac{1}{\sqrt{2}}$ & $\frac{1}{2}$ & $0$ \\
+\hline
+$\tan$ & 0 & $\frac{1}{\sqrt{3}}$ & $1$ & $\sqrt{3}$ & $\infty$ \\
+\hline
+\end{tabular}
+\end{tablehere}\\
+$\sin{-\theta} = -\sin{\theta}$\\
+$\cos{-\theta} = \cos{\theta}$\\
+$\tan{-\theta} = -\tan{\theta}$\\
+$\tan{(\theta + \pi)} = \tan{\theta}$\\
+$\sin{(\theta + 2\pi)}  = \sin{\theta}$\\
+$\cos{(\theta + 2\pi)}  = \cos{\theta}$\\
+$\sec^2{\theta} - 1 = \tan^2{\theta}$\\
+$\csc^2{\theta} - 1 = \cot^2{\theta}$\\
+$\tan^2{\theta} + 1 = \sec^2{\theta}$\\
+$\cot^2{\theta} + 1 = \csc^2{\theta}$\\
+$\sin{P} + \sin{Q} = 2\sin{\frac{P+Q}{2}}\cos{\frac{P-Q}{2}}$\\
+$\sin{P} - \sin{Q} = 2\sin{\frac{P-Q}{2}}\cos{\frac{P+Q}{2}}$\\
+$\cos{P} + \cos{Q} = 2\cos{\frac{P+Q}{2}}\cos{\frac{P-Q}{2}}$\\
+$\cos{P} - \cos{Q} = -2\sin{\frac{P+Q}{2}}\sin{\frac{P-Q}{2}}$\\
+$\sin{A}\cos{B} = \frac{\sin{A+B}+\sin{A-B}}{2}$\\
+$\cos{A}\sin{B} = \frac{\sin{A+B}-\sin{A-B}}{2}$\\
+$\cos{A}\cos{B} = \frac{\cos{A+B}+\cos{A-B}}{2}$\\
+$\sin{A}\sin{B} = \frac{\cos{A+B}+\cos{A-B}}{2}$\\
+$\sin{2\theta}=2\sin{\theta}\cos{\theta}$\\
+$\cos{2\theta}=\cos^{2}{\theta}-\sin^{2}{\theta}=1-2\sin^{2}{\theta}=2\cos^2{\theta}-1$\\
+$\tan{2\theta}=\frac{2\tan{\theta}}{1-\tan^{2}{\theta}}$\\
+$\sin{3\theta}=3\sin{\theta}-4\sin^3{\theta}$\\
+$\cos{3\theta}=4\cos^3{\theta}-3\cos{\theta}$\\
+$\tan{3\theta}=\frac{3\tan{\theta}-tan^3{\theta}}{1-3\tan^2{\theta}}$
+\subsubsection*{Sine Rule}
+$\frac{\sin A}{a} = \frac{\sin B}{b} = \frac{\sin C}{c}$
+\subsubsection*{Cosine Rule}
+$c^2 = a^2 + b^2 - 2ab\cos C$\\
+\line(1,0){290}
+\subsection*{Lecture 7-8: Motion in Two Dimensions}
+\subsubsection*{Kinematic Equations (and Component Equations)}
+$\vec{v}_f = \vec{v}_i + \vec{a}t$\\
+In components:\\
+${v}_{xf} = \vec{v}_{xi} + \vec{a}_xt$\\
+${v}_{yf} = {v}_{yi} + {a}_yt$\\
+\indent$\vec{r}_f = \vec{r}_i + \vec{v}_it + \frac{1}{2}\vec{a}t^2$\\
+In components:\\
+${x}_f = {x}_i + {v}_{xi}t + \frac{1}{2}{a}_xt^2$\\
+${y}_f = {y}_i + {v}_{yi}t + \frac{1}{2}{a}_yt^2$
+\subsubsection*{Projectile Motion}
+\noindent The trajectory of a projectile motion is parabolic:\\
+\indent $y = (\tan{\theta_i})x - (\frac{g}{2v_{i}^2 \cos^2{\theta_i}})x^2$, in the form of $y = ax - bx^2$
+\subsubsection*{Maximum Height of a Projectile}
+$h = \frac{v^2_i \sin^2{\theta_i}}{2g}$, only valid for symmetric motion
+\subsubsection*{Range of a Projectile}
+$R = \frac{v^2_i \sin{2\theta_i}}{g}$, only valid for symmetric trajectory\\
+* $R$ is maximum when $\theta_i=45^\circ$
+\subsubsection*{Uniform Circular Motion}
+\noindent Uniform circular motion occurs when an object moves in a circular path with a constant speed. An acceleration exists since the \textit{direction} of the motion is changing.
+\subsubsection*{Centripetal Acceleration}
+\noindent The acceleration is always perpendicular to the path of motion, and points toward the centre of the circle.\\
+\indent $a_c = \frac{v^2}{r}$
+\subsubsection*{Period}
+$T = \frac{2 \pi r}{v}$, (recall: time = distance/speed)\\
+$T$, is the time required for one complete revolution (one complete cycle)
+\subsubsection*{Tangential Acceleration}
+$\vec{a} = \vec{a_t} + \vec{a_r}$\\
+Equations:\\
+\indent Tangential acceleration: $a_t = \frac{dv}{dt}$\\
+\indent Radial acceleration: $a_r = a_c = \frac{v^2}{r}$\\
+\indent Total acceleration (magnitude): $a = \sqrt{a_r^2 + a_t^2}$
+\subsubsection*{Relative Velocity}
+\noindent Galilean Transformation Equations:\\
+\indent $\vec{r'} = \vec{r} - \vec{v_0}t$\\
+\indent $\vec{v'} = \vec{v} - \vec{v_0}$\\
+\line(1,0){290}
+\subsection*{Lecture 9-10: The Laws of Motion}
+\subsubsection*{Force}
+\noindent The \textbf{net/resultant force} is the vector sum of all the forces acting on an object
+\subsubsection*{Zero Net Force (Equilibrium)}
+\noindent When net force = zero, $a=0, v $ is a constant. If object is at rest, will remain at rest. If object is moving, it will continue to move at a constant velocity.
+\subsubsection*{Classes of Force}
+\noindent Contact vs Field (Non-Contact) Forces
+\subsubsection*{Newton's First Law (Law of Inertia)}
+\noindent (defn) If an object does not interact with other objects, it is possible to identify a reference frame in which the object has zero acceleration.\\	
+\noindent (alt.) In the absence of external forces, when viewed from an inertial reference frame, an object at rest remains at rest and an object continues in motion with constant acceleration.\\
+It defines a special set of reference frames called \textbf{inertial frames of references}\\
+The tendency of an object to resist any attempt to change its velocity is called \textbf{inertia}\\
+\textbf{Mass} is that property of an object that specifies how much resistance an object exhibits to changes in its velocity
+\subsubsection*{Inertia Frames}
+\noindent An inertia frame can be stationary or moving with constant velocity.
+\subsubsection*{Newton's Second Law}
+\noindent (defn) When viewed from an inertial frame, the acceleration of an object is directly proportional to the net force acting on it and inversely proportional to its mass. Algebraically,\\
+\indent $\Sigma F = ma$ ($1~N = 1~kg m s^{-2}$)\\
+$\Sigma F$ is the net force, a vector sum of all the forces acting on the object, i.e. $\Sigma F = \Sigma F_x + \Sigma F_y + \Sigma F_z$, and $\Sigma F_x = ma_x, \Sigma F_y = ma_y$ and $\Sigma F_z = ma_z$
+\subsubsection*{Gravitational Force}
+Weight = $|F_g| = mg$, $g$ is gravity\\
+Weight varies with height, because $g$ varies with height
+\subsubsection*{Newton's Third Law}
+\noindent If two objects interact, the force $F_{12}$ exerted by object 1 on object 2 is equal in magnitude, and opposite in direction, to the force $F_{21}$ exerted by object 2 on object 1.\\
+\indent $F_{12} = -F_{21},~|F_{12}| = |F_{21}|$\\
+Forces always occur in pairs; For every action, there's an reaction acting against it.
+\subsubsection*{Applications of Newton's Law}
+\noindent Objects are modeled as particles\\
+\noindent Masses of strings/ropes are negligible\\
+\noindent When a rope attached to an object is pulling it, the magnitude of that force, $T$, is the \textbf{tension} of the rope.
+\subsubsection*{Forces of Friction}
+$f_s \leq \mu_s n$ \indent As $F \uparrow, f_s \uparrow$. As $F \downarrow, f_s \downarrow$\\
+\indent \indent where the equality holds when the surfaces are on the verge of slipping (Impending Motion)\\
+\indent$f_k = \mu_k n$\\
+\indent$\mu = \tan \theta$ ($\theta$ = angle of elevation of inclined plane)\\
+$f_s$: Force of static friction, acts to keep object from moving\\
+$f_k$: Force of kinetic friction\\
+$\mu$: Coefficient of friction, depends on surfaces in contact. Usually $< 1$, but can be $\geq 1$.
+$n$: Normal force (opposite of weight)\\
+$\cdot$ The direction of frictional force is opposite to the direction of motion and parallel to the surfaces in contact\\
+$\cdot$ The coefficients of friction are independent of the area of contact.\\
+\line(1,0){290}
+\subsection*{Lecture 11-12: Circular Motion \& Other Applications of Newton's Laws}
+\subsubsection*{Centripetal Force}
+$F_c = ma_c$, $a_c = \frac{v^2}{r}$ is Centripetal acceleration
+\subsubsection*{Conical Pendulum}
+$v = \sqrt{Lg \sin \theta \tan \theta}$, $F_c = ma_c = \frac{mv^2}{r} = T \sin \theta$\\
+$L$: Length of string\\
+$g$: Gravity\\
+$\theta$: Angle between string and vertical.\\
+* Note that $v$ is independent of mass.
+\subsubsection*{Motion in a Horizontal Circle}
+$v = \sqrt{\frac{Tr}{m}}$\\
+$r$: Turning radius
+\subsubsection*{Horizontal (Flat/Unbanked) Curve}
+\noindent The force of static friction supplies the centripetal force:\\
+\indent $f_s = \mu mg = \frac{mv^2}{r} \Rightarrow v = \sqrt{\mu g r}$\\
+Thus, maximum speed is $v = \sqrt{\mu g r}$, and is independent of mass.
+\subsubsection*{Banked Curve}
+$\tan \theta = \frac{v^2}{rg} \Rightarrow v = \sqrt{(\tan{\theta})gr}$\\
+$r$: Turning radius\\
+$\theta$: Bank angle (Angle of elevation)
+\subsubsection*{Loop-the-Loop in Vertical Plane}
+$\displaystyle n_{bot} = mg (1 + \frac{v^2}{rg})$, $\displaystyle n_{top} = mg (\frac{v^2}{rg} - 1)$\\
+$\cdot$ These formula apply for when the pilot is on the \underline{inside} of the loop. For ``black-out" situations\\
+\indent $\displaystyle n_{bot} = - \frac{mv^2}{r} - mg$, $\displaystyle n_{top} = mg - \frac{mv^2}{r}$\\
+$\cdot$ These formula apply for when the pilot is on the \underline{outside} of the loop. For ``red-out" situations
+\subsubsection*{Vertical Circle with Non-Uniform Speed}
+\noindent The tension at any point of the vertical circle is:\\
+\indent $T = m\left( \frac{v^2}{r} + g \cos{\theta} \right)$\\
+$r$: Radius of circle\\
+$\theta$: Angle between vertical, and the straight line from object to origin.\\
+$T$ is max when $\theta=0^\circ$, $T$ is min when $\theta=180^\circ$.
+\subsubsection*{Fictitious Forces}
+\noindent A \textbf{fictitious force} results from an accelerated frame of reference.\\
+1. Centrifugal Force - Feeling get thrown out on a merry-go-round.
+2. Coriolis Force - An apparent force caused by changing the radial position of an object in a rotating coordinating system.
+\line(1,0){290}
+\subsection*{Lectures 13-14: Energy and Energy Transfer}
+\subsubsection*{Conservation of Energy}
+\noindent Energy cannot be created or destroyed. It can only be transferred or transformed.
+\subsubsection*{Work (Work Done)}
+$W = F \Delta r \cos{\theta}$ (1 $J$ = 1 $Nm$)\\
+$W$: Work done (Joules, $J$)\\
+$F$: Force (Newtons, $N$)\\
+$r$: Displacement (Meters, $m$)\\
+$\rightarrow$ Work is a scalar quantity and an accumulated sum. $W=0$ if $r=0$.
+\subsubsection*{Work is an Energy Transfer}
+\noindent If the work is done on a system and it is \underline{positive}, energy is transferred \underline{to} the system.\\
+\noindent If the work is done on a system and it is \underline{negative}, energy is transferred \underline{from} the system.
+\subsubsection*{Work Done By Multiple Forces}
+\noindent If the system can be modelled as a particle:\\
+$\displaystyle \sum W = W_{net} = \int_{x_i}^{x_f} \left( \sum F_x \right) dx$\\
+\noindent If the system cannot be modelled as a particle:\\
+$\displaystyle W_{net} = \sum W_{by~individual~forces}$
+\subsubsection*{Hooke's Law}
+$F_s = - kx$\\
+$F_s$: Force exerted by the spring\\
+$k$: Spring constant; measures the stiffness of the spring\\
+$x$: Position of block with respect to the equilibrium position ($x=0$)\\
+When $x>0$, $F<0$. When $x=0$, $F=0$. When $x<0$, $F>0$.
+\subsubsection*{Springs in Combination}
+\noindent \textbf{In Series}: Creates a \underline{weaker} configuration\\
+\noindent \textbf{In Parallel}: Creates a \underline{stronger} configuration
+\subsubsection*{Work Done by a Spring}
+$\displaystyle W_s = \int_{x_i}^{x_f} \left( F_x \right) dx = \int_{- x_{max}}^{0} \left( -kx \right) dx = \frac{1}{2}kx_{max}^2$\\
+The total work done as the block moves from $-x_{max}$ to $x_{max}$ is zero.
+\subsubsection*{Kinetic Energy}
+$\displaystyle K = \frac{1}{2}mv^2,~\sum W = K_f - K_i = \Delta K$
+\subsubsection*{Potential Energy}
+$U = mgh = mg\Delta h$
+\subsubsection*{Conservation of Energy}
+\noindent Energy cannot be created or destroyed. In a \textit{lost-less} set up, $\sum$ of all final energy $=$ $\sum$ of all initial energy.
+\subsubsection*{Power}
+$\displaystyle \bar P = \frac{W}{\Delta t}$, Watts (1 joule / second) \\
+average power, rate of energy transfer.\\
+\line(1,0){290}
+\subsection*{Lecture 15-16: Potential Energy}
+\subsubsection*{Conservation of Mechanical Energy}
+$K_f + U_f = K_i + U_i$.
+\subsubsection*{Mechanical Energy and Non-conservative Forces}
+$\Delta E_{mech} = \Delta K + \Delta U = -f_kd$ \\
+$f_k$: Frictional force\\
+$d$: Displacement \\
+\line(1,0){290}
+\subsection*{Lecture 17-18: Linear Momentum and Collisions}
+$p = mv$, $kg \cdot ms^{-1}$, vector quantity \\
+$p$: Linear momentum. Not to be mistaken with $\rho$ (Density).
+\subsubsection*{Newton and Momentum}
+$\displaystyle \sum F = ma = m\frac{dv}{dt} = \frac{d(mv)}{dt} = \frac{dp}{dt}, dp = Fdt$
+\subsubsection*{Conservation of Momentum}
+$p_{total} = p_1 + p_2$ = constant \\
+\indent $p_{1i} + p_{2i} = p_{1f} + p_{2f}$
+\subsubsection*{Impulse}
+$\displaystyle \Delta p = p_f = p_i = \int_{t_i}^{t_f} Fdt = I = \bar F \Delta t$ \\
+$I$: change of momentum of particle, also Force $\times$ time \\
+$\bar F$: averaged F.
+\subsubsection*{Perfectly Inelastic Collisions}
+\noindent Objects stick together after collisions, they share the same velocity \\
+\indent $\displaystyle v_f = \frac{m_1 v_{1i} + m_2 v_{2i}}{m_1 + m_2}$
+\subsubsection*{Elastic Collisions}
+\noindent Both momentum and kinetic energy are conserved \\
+\indent $m_1 v_{1i} + m_2 v_{2i} = m_1 v_{1f} + m_2 v_{2f}$ \\ 
+\indent $\displaystyle \frac{1}{2} m_1 v_{1i}^2 + \frac{1}{2} m_2 v_{2i}^2 = \frac{1}{2}m_1 v_{1f}^2 + \frac{1}{2}m_2 v_{2f}^2$ \\
+\indent $v_{1i} - v_{2i} = -(v_{1f} - v_{2f})$ \\
+\indent $\displaystyle v_{1f} = \frac{m_1 - m_2}{m_1 + m_2}v_{1i} + \frac{2m_2 v_{2i}}{m_1 + m_2}$ \\
+\indent $\displaystyle v_{2f} = \frac{m_2 - m_1}{m_1 + m_2}v_{2i} + \frac{2m_1 v_{1i}}{m_1 + m_2}$
+\subsubsection*{Rocket Propulsion}
+$M dv = -v_e dM$ \\
+\indent $\displaystyle v_f - v_i = v_e \ln{\frac{M_i}{M_f}}$ \\
+\indent Thrust = $M \frac{dv}{dt} = |v_e \frac{dM}{dt}|$ \\
+$v_e$: velocity of escape gas or exhaust speed \\
+$dM/dt$: burn rate of fuel \\
+\line(1,0){290}
+\subsection*{Lecture 19-20: Rotation of a Rigid Object}
+\subsubsection*{Angular Position}
+$s = r\theta$ \\
+$s$: Arc length \\
+$r$: Radius \\
+$\theta$: angle measured anti-clockwise from x-axis, in Radians
+\subsubsection*{Radian-Degree}
+$\theta$[rad] = $\frac{\pi}{180^\circ}\theta$ [degrees]
+\subsubsection*{Angular Displacement}
+$\Delta \theta = \theta_f - \theta_i$
+\subsubsection*{Average Angular Speed}
+$\bar \omega = \frac{\theta_f - \theta_i}{t_f - t_i} = \frac{\Delta \theta}{\Delta t}$, radians/$s$
+\subsubsection*{Average Angular Acceleration}
+$\bar \alpha = \frac{\omega_f - \omega_i}{t_f - t_i} = \frac{\Delta \omega}{\Delta t}$, radians/$s^2$
+\subsubsection*{Angular vs Linear Quantities}
+$s = r\theta$, $v = r\omega$, $a = r\alpha$
+\subsubsection*{Centripetal Acceleration}
+$a_c = \frac{v^2}{r} = r\omega^2$
+\subsubsection*{Rotational Kinetic Energy}
+$K_R = \frac{1}{2}I\omega^2$ \\
+$I$: Here $I$ is moment of inertia
+\subsubsection*{Moment of Inertia}
+$I = \sum m_i r_i^2$\\
+Uniform Thin Hoop: $I = MR^2$ \\
+Uniform Rigid Rod: $I = \frac{1}{12}ML^2$ \\
+Uniform Solid Cylinder: $I = \frac{1}{2}MR^2$
+\subsubsection*{Parallel-Axis Theorem}
+$I = I_{cm} + MD^2$ \\
+For when rotation is not at the centre of mass. \\
+$I_{CM}$: $I$ at centre of mass\\
+$M$: Mass \\
+$D$: Distance between $CM$ and new rotation axis
+\subsubsection*{Torque}
+$\uptau = F \sin{\phi} \times d = d \sin{\phi} \times F$, Newton-metres (Nm) \\
+\indent $\uptau = I\alpha$ \\
+\indent $d = r \sin{\phi}$\\
+Torque is the tendency of a force to rotate an object about some axis\\
+$F$: Force \\
+$\phi$: Angle the force makes with the horizontal \\
+$d$: The moment {\it arm} (or lever arm) \\
+$r$: Radius of rotation \\
+$I$: Moment of inertia \\
+$\alpha$: Angular acceleration
+\subsubsection*{Power in Rotational Motion}
+$P_{rot} = \uptau \omega = Fv$
+\subsubsection*{Total Kinetic Energy of Rolling Object}
+$\displaystyle K = \frac{1}{2}M(V_{CM})^2 + \frac{1}{2}(I_{CM})\omega^2$ \\
+\line(1,0){290}
+\subsection*{Lecture 19-20: Temperature}
+\subsubsection*{Absolute Zero Temperature}
+$0K = -273.15^\circ C$
+\subsubsection*{Expansion (Linear/Area/Volume)}
+Coefficient of expansion: $\alpha \textrm{ or } \beta$\\
+\noindent Linear: $\Delta L = \alpha L_{\textrm{initial}} \Delta T$ \\
+\noindent Area: $\Delta A = 2 \alpha A_{\textrm{initial}} \Delta T$ \\
+\noindent Volume: $\Delta V = \beta V_{\textrm{initial}} \Delta T$, $\beta=3\alpha$ if material is solid/isotropic
+\subsubsection*{Water's Unusual Behaviour}
+\noindent As the temperature increases from 0 to 4$^\circ$C, water \underline{contracts}. When decrease, water \underline{expands}
+\subsubsection*{The Mole}
+Avogadro's number $N_A = 6.022 \times 10^{23}$ molecules/mole
+\indent Molar mass $M = \frac{m}{n}$, $m: $ mass of sample, $n: $ no. of moles
+\subsubsection*{Ideal Gas Law}
+$PV = nRT$\\
+$P$: Pressure \\
+$V$: Volume \\
+$n$: no. of moles \\
+$R$: Universal Gas Constant, $8.314$ J/mol$\cdot$K \\
+$T$: Temperature in Kelvin \\
+1 atm = $1.013 \times 10^5 N/m^2$ \\
+Pressure = $h \rho g$, $h$ is height, $\rho$ is density, $g$ is gravity
+\subsection*{Lecture 21-22: Heat \& 1st Law of Thermodynamic}
+\subsubsection*{Specific Heat}
+$Q = mc\Delta T$ \\
+$c$: Specific Heat \\
+$Q$: Energy \\
+$m$: Mass \\
+$T$: Temperature \\
+Specific heat is how \underline{insensitive} a substance is to the addition of energy i.e. ``thermal inertia"
+\subsubsection*{Latent Heat}
+$L = Q/m$ or $Q = \pm mL$ \\
+$L$: Latent Heat\\
+The energy required to change the phase (e.g. solid to liquid state)
+\subsubsection*{Workd in Thermodynamics}
+$dW = -P dV$ \\
+Work done is the \underline{negative} of the area under the PV graph \\
+Work done depend on path on PV graph i.e. How P or V changes.
+\subsubsection*{1st Law of Thermodynamics}
+$\Delta E_{\textrm{internal}} = Q + W$
+\subsubsection*{Isolated Systems}
+$Q = W = 0 \Rightarrow \Delta E_{\textrm{internal}} = 0$
+\subsubsection*{Adiabatic Process}
+$Q=0, \Delta E_{\textrm{internal}} = W$\\
+No energy enters or leaves the system; Insulating walls of system; Process so quickly no heat can be exchanged.\\
+If gas compressed adiabatically, $T \uparrow$ \\
+If gas expanded adiabatically, $T \downarrow$
+\subsubsection*{Adiabatic Free Expansion}
+$Q=0, W=0, \Delta E_{\textrm{internal}} = 0$ \\
+Adiabatic because insulated container. Free expansion because gas expands into vacuum, no force applied thus $W=0$
+\subsubsection*{Isothermal Process}
+$Q = -W$, $T$ is constant, $PV$ is constant \\
+\indent $\displaystyle W = nRT \ln{\frac{V_i}{V_f}}$
+\subsubsection*{Isobaric Process}
+$P$ is constant \\
+\indent $W = -P(V_f - V_i)$
+\subsubsection*{Isovolumetric Process}
+$V$ is constant, $W=0$, $\Delta E_{\textrm{internal}} = Q$
+\end{multicols}
+\end{document}

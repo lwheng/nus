@@ -1,0 +1,5 @@
+(recfun mypower {(int * int -> int)} x y -> 
+
+if (y = 0) then 1 else (x * (mypower x (y - 1))) end
+
+end 2 32)

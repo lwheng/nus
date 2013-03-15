@@ -1,0 +1,1 @@
+let {int} AboutPi = 3 {int -> int} Square = fun {int -> int} y -> y * y end  in {int -> int} fun{ int -> int}  x -> AboutPi * (Square x) end end

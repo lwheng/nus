@@ -1,0 +1,561 @@
+\documentclass[10 pt]{article}
+\usepackage{amssymb,amsmath,amstext,amsgen,amsbsy,amsopn,amsfonts,graphicx, overcite,theorem, anysize, multicol}
+\usepackage[compact]{titlesec} \titlespacing{\section}{0pt}{*0}{*0} \titlespacing{\subsection}{0pt}{*0}{*0} \titlespacing{\subsubsection}{0pt}{*0}{*0}
+\renewcommand{\baselinestretch}{1.0}
+%\marginsize{0.5in}{0.5in}{0.5in}{0.5in}
+%\marginsize{left}{right}{top}{bottom}
+\usepackage[lmargin=0.1in,rmargin=0.1in,tmargin=0.1in,bmargin=0.1in]{geometry}
+% By default, \columnseprule is 0pt, which means they are invisible, to
+% change:
+\setlength{\columnseprule}{0.1pt}
+
+% If you feel the columns are too close together (default: 10pt), then
+% redefine:
+\setlength{\columnsep}{10pt}
+
+\makeatletter
+\newenvironment{tablehere}
+  {\def\@captype{table}}
+  {}
+
+\newenvironment{figurehere}
+  {\def\@captype{figure}}
+  {}
+\makeatother
+
+\begin{document}
+\begin{multicols}{2}
+\subsection*{Lecture 1: Electromagnetic Interactions}
+\subsubsection*{Electric Force (Coulombs Law)}
+$F = \frac{1}{4 \pi \epsilon_{0}} \cdot \frac{|q_{1}||q_{2}|}{r^{2}}$, Newtons (N) \\
+$\epsilon_{0} = 8.85 \times 10^{-12}~C^{2}/Nm^{2}$, Permittivity of free space.\\
+$\frac{1}{4 \pi \epsilon_0} = 8.99 \times 10^9 Nm^2/C^2$, Coulomb's Constant
+\subsubsection*{Fundamentals of Charges}
+Fundament charge: $e = 1.60 \times 10^{-19}~C$ \\
+$q = (N_{p} - N_{e})e$ \\ 
+$q$ : charge, $N_{p}$ : No. of protons, $N_{e}$ : No. of electrons
+\\
+\line(1,0){290}
+\subsection*{Lecture 2: Electric Force and Field}
+\subsubsection*{Electric Field}
+$E = \frac{1}{4 \pi \epsilon_{0}} \cdot \frac{|q|}{r^{2}}$ \\ 
+S.I unit: Newtons/Coulombs (N/C) \\
+*Direction of electric field: positive (outwards), negative (inwards)
+
+\subsubsection*{Large charged plate}
+$E = \frac{\sigma}{2\epsilon_{0}}, \sigma = \frac{Q}{A}.~$\\
+$\sigma$ is Surface Charge Density \\
+$Q$ is charge. \\
+$A$ is area of plate. \\
+*No. of field lines entering/leaving the charge is proportional to the amount of charge.
+\\
+\line(1,0){290}
+\subsection*{Lecture 3: Electric Potential}
+\subsubsection*{Work done}
+$W_{a\rightarrow b} = - \Delta U = U_{a} - U_{b}$
+\subsubsection*{Potential energy of charge $q_{0}$ in a uniform electric field}
+ $U = q_{0}Ey$ \\
+$y$: distance from negative plate.
+
+\subsubsection*{Electric potential energy between 2 point charges}
+$U = \frac{1}{4 \pi \epsilon_{0}} \cdot \frac{q_{1} \cdot q_{2}}{r}$ \\
+\normalsize
+*For shells, $r$ is distance between centers. \\
+$U = \frac{1}{4 \pi \epsilon_{0}} \cdot \sum_{i<j} \frac{q_{i} \cdot q_{j}}{r_{ij}}$ \\
+$U = q \Delta V = q(V_{f} - V_{i})$
+
+\subsubsection*{Electric Potential}
+$V = \frac{1}{4 \pi \epsilon_{0}} \cdot \frac{q}{r}$ \\
+\normalsize
+*Electric \textbf{force} on a charge is always in the direction of \textbf{lower} electric \textbf{potential energy}. \\
+*Electric \textbf{field} is always in the direction of \textbf{lower potential}. \\
+$V = \frac{1}{4 \pi \epsilon_{0}} \cdot \sum_{i} \frac{q_{i}}{r_{i}}$ (scalar sum)
+
+\subsubsection*{Total energy conservation}
+$K_{i} + qV_{i} = K_{f} + qV_{f}$ \\
+\normalsize
+$K$: kinetic energy \\
+$qV$: potential energy \\
+$V$: potential
+
+\subsubsection*{Kinetic Energy}
+$E_{k} = \frac{1}{2}mv^{2}$ \\
+\normalsize
+*Mass of proton: $1.67 \times 10^{-27}~kg$ \\
+*Mass of electron: $9.11 \times 10^{-31}~kg$
+
+\subsubsection*{Electric Field vs Potential}
+$E = \frac{\Delta V}{d}$ \\
+\normalsize
+$d$: distance between 2 equipotential surfaces
+\\
+\line(1,0){290}
+\subsection*{Lecture 4: Capacitance}
+*Any 2 \underline{conductors} (regardless of shape) separated by an insulator (or vacuum) form a Capacitor. \\
+*The 2 conductors have charges with \underline{equal magnitude} but \underline{opposite signs}.
+\subsubsection*{Capacitance}
+$C = \frac{Q}{\Delta V}$, Coulomb per Volt (C/V), Farad (F). \\
+$C = \frac{\epsilon_{0}A}{d}$, $A$: Area, $d$: distance between
+
+\subsubsection*{Energy Storage in Capacitor}
+$U = \frac{1}{2}QV = \frac{Q^{2}}{2C} = \frac{1}{2}CV^{2}$\normalsize, Joules (J)
+
+\subsubsection*{Energy Density in Electric Field}
+$u = \frac{1}{2}\epsilon_{0}E^{2}$, $(J/m^{3})$ \\
+$u$: amount of \underline{energy per unit volume}
+
+\subsubsection*{Capacitors with Dielectrics}
+$C = \kappa C_{0}, \kappa > 1$ \\
+$\kappa$: dielectric constant \\
+\large Inserting dielectric \underline{without} battery \\
+$\Rightarrow V = \frac{Q_{0}}{C} = \frac{Q_{0}}{\kappa C_{0}} = \frac{V_{0}}{\kappa}$ \\
+$\Rightarrow E = \frac{V}{d} = \frac{V_{0}}{\kappa d} = \frac{E_{0}}{\kappa}$ \\
+$\Rightarrow U = \frac{U_{0}}{\kappa} < U_{0}$ \\
+\large Inserting dielectric \underline{with} battery \\
+$\Rightarrow Q = CV_{0} = (\kappa C_{0})V_{0} = \kappa Q_{0}$ \\
+$\Rightarrow U = \kappa U_{0} > U_{0}$ \\
+*Dielectric strength of Dry Air = $3 \times 10^{6}~V/m$
+\subsubsection*{Find Maximum Charge on Capacitor}
+*Given dielectric strength of medium: \\
+$Q_{max} = \kappa \times \frac{\epsilon_{0} A}{d} \times d$
+\subsubsection*{Capacitor Network}
+In parallel: $C = C_{1} + C_{2}$ \\
+In series: $\frac{1}{C} = \frac{1}{C_{1}} + \frac{1}{C_{2}}$
+\\
+\line(1,0){290}
+\subsection*{Lecture 5: Current and Resistance}
+\subsubsection*{Ohm's Law}
+$I = \frac{\Delta V}{R}$ \\
+\large In series: \\
+$V = V_{1} + \ldots + V_{n}$ \\
+$I = I_{1} = \ldots = I_{n}$ \\
+$R = R_{1} + \ldots + R_{n}$ \\
+\large In parallel: \\
+$V_{1} = V_{2} = \ldots = V_{n}$ \\
+$I = I_{1} + \ldots + I_{n}$ \\
+$\frac{1}{R} = \frac{1}{R_{1}} + \ldots + \frac{1}{R_{n}}$
+
+\subsubsection*{Currents and Charges}
+$I = \frac{\Delta Q}{\Delta t} = |q|nAv_{d}$ \\
+\normalsize
+$n$: no. of charge carriers per unit volume \\
+$A$: cross section area \\
+$v_{d}$: drift speed of current
+
+\subsubsection*{Resistance}
+$R = \frac{\rho L}{A}$ , (Ohms, $\Omega$) \\
+$\rho$: resistivity, (Ohms meter, $\Omega \cdot m$) \\
+$L$: length \\
+$A$: cross section area
+
+\subsubsection*{Resistance and Temperature}
+$\rho = \rho_{0} [ 1 + \alpha (T - T_{0}) ]$ \\
+$R = R_{0} [ 1 + \alpha (T - T_{0}) ]$ \\
+\normalsize
+$\rho_{0}$: resistivity at $T_{0}$ \\
+$T_{0}$: usually $20^{\circ} C$ \\
+$\alpha$: temp. coefficient of resistivity $(^{\circ}C)^{-1}$
+
+\subsubsection*{Power}
+$P = \frac{\Delta Q \Delta V}{\Delta t} = \Delta V I = I^{2} R = \frac{\Delta V^{2}}{R}$ , (Watts, W).
+\\
+\line(1,0){290}
+\subsection*{Lecture 6: DC Circuits}
+$I = \frac{\varepsilon}{R + r}$ \\
+\normalsize
+$\varepsilon$: EMF \\
+$R$: external resistor \\
+$r$: internal resistor (in battery)
+
+\subsubsection*{Kirchhoff's Rules}
+*$\sum I_{i}$ into junction = $\sum I_{i}$ out of junction \\
+*Sum of voltage drops around a loop is zero, $\varepsilon = Ir + IR$ \\
+*Intuition: Applying Kirchhoff is to form equations of $emf = 0$. \\
+*Recall: Can use Row Operations from Linear Algebra to reduce to Reduced Row Echelon form.
+
+\subsubsection*{RC Circuits}
+\large RC Circuit: Charging \\
+$\varepsilon - I(t)R - \frac{q(t)}{c} = 0$ \\
+Just after switch closed: \\
+$q(t) = q_{0} = 0 \Rightarrow \varepsilon - I_{0}R = 0 \Rightarrow I_{0} = \frac{\varepsilon}{R}$ \\
+Long after switch closed: \\
+$I(t) = I_{\infty} = 0 \Rightarrow \varepsilon - \frac{q_{\infty}}{C} = 0 \Rightarrow = q_{\infty} = C\varepsilon$ \\
+Intermediate: \\
+$q(t) = q_{\infty}(1-e^{-t/RC}),~I(t) = I_{0}e^{-t/RC}$ \\
+\large RC Circuit: Discharging \\
+$\frac{q(t)}{C} + I(t)R = 0$ \\
+Just after switch closed: \\
+$q(t) = q_{0} \Rightarrow \frac{q_{0}}{C} + I_{0}R = 0 \Rightarrow I_{0} = - \frac{q_{0}}{RC}$ \\
+Long after switch closed: \\
+$I(t) = I_{\infty} = 0 \Rightarrow \frac{q_{\infty}}{C} = 0 \Rightarrow q_{\infty} = 0$ \\
+Intermediate: \\
+$q(t) = q_{0}e^{-t/RC}, ~ I(t) = I_{0}e^{-t/RC}$
+\\
+\line(1,0){290}
+\subsection*{Lecture 7: Magnetism}
+\subsubsection*{Magnetic Flux}
+$\Phi = BA \cos{\theta}$ , SI unit: $Tm^{2} \equiv Wb$ \\
+$B$: magnetic field strength (Teslas, T) \\
+$A$: area of plane \\
+$\theta$: angle between $B$ and normal to plane
+
+\subsubsection*{Magnetic Force on ONE moving charge}
+$F = |q|vB\sin{\theta}$ , Newtons \\
+$\theta$: angle between $v$ and $B$. \\
+(recall: $E=\frac{F}{q} \Rightarrow E = vB$, when $\theta=90^\circ$)
+
+\subsubsection*{Right-hand Rule}
+Thumb: $F$, Index: $v$, Middle: $B$ \\
+*If \underline{negative} charge, $F$ is in \underline{opposite} direction to thumb
+
+\subsubsection*{Radius of circular orbit}
+$R = \frac{mv}{B|q|}$ \normalsize
+\\
+\line(1,0){290}
+\subsection*{Lecture 8: Currents and Magnetism}
+\subsubsection*{Magnetic Force on MANY moving charges}
+$F = ILB\sin{\theta}$ \\
+$L$: length of wire \\
+$\theta$: angle between $I$ and $B$
+\subsubsection*{Gravity Force}
+$F = mg$ \normalsize
+\subsubsection*{Magnetic Field of a Long Straight Wire}
+$B = \frac{\mu_{0} I}{2 \pi r}$ \\
+$\mu_{0}$: permeability of vacuum, $\mu_{0} = 4\pi \times 10^{-7}~Tm/A$ \\
+$r$: distance from wire \\
+*Right-hand rule: Thumb: direction of $I$, fingers: direction of $B$.
+\subsubsection*{Force between parallel wires with length L}
+*Consider $I$ directed to the right, wire $a$ is $d$ meters from $b$. \\
+Magnetic force on wire $a$ and $b$: \\
+$F_{a} = I_{a}LB_{b} = \frac{\mu_{0}I_{a}I_{b}L}{2\pi d}$, (downward) \\
+$F_{b} = I_{b}LB_{a} = \frac{\mu_{0}I_{a}I_{b}L}{2\pi d}$, (upward)
+
+\subsubsection*{Bar magnet vs Current Loop}
+*If wrap fingers around wire in loop, Thumb: $I$, fingers: $B$ \\
+*If put fingers on loop, Thumb:$B$, fingers: $I$, like inside of a Bar Magnet \\
+*The side of the current loop from which $B$ emerges is North pole.
+
+\subsubsection*{Magnetic Field at CENTER of current loop}
+$B = \frac{\mu_{0}NI}{2R}$ \\
+$N$: number of loops
+
+\subsubsection*{Interaction between Current Loops}
+*Same $I$ direction: attract \\
+*Different $I$ direction: repel
+
+\subsubsection*{Magnetic Field INSIDE ideal solenoid}
+$B = \mu_{0}nI$ \\
+$n$: no. of turns per unit length \\
+*Solenoid becomes like a Bar Magnet
+\subsubsection*{Cosine Rule}
+$c^2 = a^2 + b^2 - 2ab \cos{C}$, $C$ is angle between $a$ and $b$ \\
+\line(1,0){290}
+\subsection*{Lecture 9: Electromagnetic Induction}
+$\Delta \Phi \rightarrow \varepsilon_{induced} \rightarrow I_{induced} \rightarrow B_{induced} \rightarrow \Phi_{induced}$
+\subsubsection*{Len's Law} 
+The direction of $I_{induced}$ is such that the $B_{induced}$ \textbf{opposes} the \textbf{change} in the flux that induces the current.
+\subsubsection*{Faraday's Law of Induction}
+$|\varepsilon| = N \frac{|\Delta \Phi|}{\Delta t} = N \frac{|\Phi_{f} - \Phi_{i}|}{\Delta t}$, $N$ is no. of loops
+\subsubsection*{Motional Electromotive Force}
+$\Delta V = \varepsilon = vBL$, (recall $E=vB, E=\frac{\varepsilon}{L}$)\\
+To have motional emf, conductor must \textbf{cut} through magnetic field
+\subsubsection*{Induced Current}
+$I = \frac{\varepsilon}{R} = \frac{vBL}{R}$
+\subsubsection*{Magnetic Force (magnitude) on bar}
+$F =ILB = \frac{vB^{2}L^{2}}{R}$
+\\
+\line(1,0){290}
+\subsection*{Lecture 10: Electromagnetic Waves (EM Waves)}
+\subsubsection*{Speed of EM Waves}
+$c = \frac{1}{\sqrt{\varepsilon_{0}\mu_{0}}}$, $E=cB$ \\
+Transverse wave: $\vec{E}$ and $\vec{B}$ fields are \textbf{perpendicular}. 
+\subsubsection*{Energy in EM Waves}
+$u_{E} = \frac{1}{2}\epsilon_{0}E^{2}, u_{B} = \frac{1}{2} \frac{B^{2}}{\mu_{0}}, u_{E} = u_{B}$ \\
+So total, $u_{EM} = u_{E} + u_{B} = \epsilon_{0}E^{2} = \frac{B^{2}}{\mu_{0}}$
+\subsubsection*{Intensity of EM Waves}
+$I = \frac{U}{A \Delta t} = \frac{P}{A} = u_{EM}c = c\varepsilon_{0}E^{2} = \frac{c}{\mu_{0}B^{2}}$, (Watts/$m^{2}$ or $W/m^{2}$) \\ Here $I$ is Intensity, not Current
+\subsubsection*{EM Spectrum}
+$c = f\lambda$, $f$: frequency, $\lambda$: wavelength
+\subsubsection*{Doppler Equation for EM Waves}
+$f_{o} = f_{s} (1 \pm \frac{u}{c})$, only valid for $u \ll c$ \\
+$f_{o}$ : observed frequency \\
+$f_{s}$ : frequency emitted by the source \\
+$u$ : relative speed between source and observer \\
+$u = |v_{1}+v_{2}| \Rightarrow$ moving in opposite directions \\
+$u = |v_{1}-v_{2}| \Rightarrow$ moving in same directions \\
+*Important intuition: As objects come closer, frequency increase
+\subsubsection*{Polarization of EM Waves}
+*Direction of polarization of an EM wave is defined to be the \textbf{direction of $\vec{E}$ field}. A wave propagates with FIXED polarization $\rightarrow$ linearly polarized.
+\subsubsection*{Unpolarized Light on Linear Polarizer}
+$I_{transmitted} = \frac{1}{2} I_{incident}$, here $I$ is Intensity
+\subsubsection*{Linearly Polarized Light on Linear Polarizer, Malus' Law}
+$E_{transmitted} = E_{incident}\cos{\theta} \Rightarrow I_{transmitted} = I_{incident} \cos^{2}{\theta}$ \\
+$\theta$: angle between the incoming light's polarization and the transmission axis (TA)
+\subsubsection*{Optical Activity}
+The ability of a substance to rotate the polarization direction of linearly polarization light. This ability depends on the molecular structure of the substance.\\
+\line(1,0){290}
+\subsection*{Lecture 11: Reflection Of Light}
+\subsubsection*{Law of Reflection}
+$\theta_{i} = \theta_{r}$ \\
+$\theta_{i}$: Incident angle \\
+$\theta_{r}$: Reflected angle \\
+Specular vs Diffuse reflection: one is smooth surface, one is rough surface. Diffuse makes dry road easy to see at night. \\
+*For plane mirrors, basically it's all about similar triangles
+\subsubsection*{Spherical Mirrors}
+$C = $ center of curvature.
+\subsubsection*{Focal Point for Concave/Convex Mirror}
+Concave: $f = \frac{R}{2}$, Convex: $f=-\frac{R}{2}$  \\
+Concave converges, Convex diverges \\
+$f$: focal length, distance from Focal Point, $F$, to center of mirror \\
+$R$: distance from $C$ to center of mirror \\
+*Flat/Plane mirror has $f = \infty, \because R\rightarrow \infty$
+\subsubsection*{Ray tracing for Concave/Convex mirror \\(Find real/virtual image)}
+Ray\#1: Parallel to principal axis, reflects through $F$. \\
+Ray\#2: Through $C$, center of curvature. \\
+Ray\#3: Through $F$, reflects parallel to principal axis. \\
+*Intersection point is where the real/virtual image lies.
+\subsubsection*{Spherical Mirror Equations}
+$\frac{1}{d_{o}} + \frac{1}{d_{i}} = \frac{1}{f}$, applies to concave/convex \\
+$d_{o}$: object distance
+$d_{i}$: image distance
+$f$: focal length
+\subsubsection*{Magnification}
+$m \equiv \frac{h_{i}}{h_{o}} = - \frac{d_{i}}{d_{o}}$ \\
+$h_{o}$: object height \\
+$h_{i}$: image height, $(-ve) \rightarrow$ inverted image \\
+$m$ has same sign as $h_{i}$, $|m|<1 \rightarrow$ reduced, $|m|>1 \rightarrow$ enlarged. \\
+\line(1,0){290}
+\subsection*{Lecture 12: Refraction Of Light}
+\subsubsection*{Index of Refraction}
+$n \equiv \frac{c}{v}$, $n>1, \because c>v$ \\
+$c$: speed of light in vacuum \\
+$v$: speed of light in medium
+\subsubsection*{Frequency between media}
+$v=f\lambda \Rightarrow \frac{\lambda_{1}}{\lambda_{2}} = \frac{v_{1}}{v_{2}} = \frac{n_{2}}{n_{1}}$
+\subsubsection*{Snell's Law of Refraction}
+$n_{1}\sin{\theta_{1}} = n_{2}\sin{\theta_{2}}$ \\
+$\theta$: angle between light and normal of incidence
+\subsubsection*{Apparent Depth}
+$\frac{d'}{d} = \frac{n_{1}}{n_{2}}$ \\
+$d'$: apparent depth \\
+$d$: actual depth \\
+$n_{1}$: refraction index of medium 1 (before refraction) \\
+$n_{2}$: refraction index of medium 2 (after refraction)
+\subsubsection*{Total Internal Reflection}
+Critical angle: $n_1 \sin{\theta_c} = n_2 \sin{90^{\circ}} \Rightarrow \sin{\theta_{c}} = \frac{n_{2}}{n_{1}}$
+\subsubsection*{Polarization by Reflection, Brewster's Angle}
+$\tan{\theta_{B}} = \frac{n_{2}}{n_{1}} \Rightarrow \theta_{B}:$ Brewster's Angle \\
+*When unpolarized light is reflected from a surface, it \textit{can} get polarized at $0^{\circ} < \theta_{i}< 90^{\circ}$. At $0^{\circ}/90^{\circ}$, light remains unpolarized. \\
+*Reflected light is \textbf{totally} polarized \textbf{parallel} to the surface when the reflected and refracted rays are at right angles. \\
+*\textit{Dispersion} is the dependence of the index of refraction of a transparent medium on the wavelength of light.
+\\
+\line(1,0){290}
+\subsection*{Lecture 13: Optical Instruments}
+\subsubsection*{Thin Lenses}
+Principal Rays for Converging/Diverging lens \\
+Ray\#1: Parallel to principal axis, passes through $F$. \\
+Ray\#2: Through center of lens. \\
+Ray\#3: Through $F$, emerges parallel to principal axis.
+\subsubsection*{Thin Lens Equation}
+$\frac{1}{d_o} + \frac{1}{d_i} = \frac{1}{f}$ \\
+$d_o$: object distance \\
+Positive: real object (in front of lens) \\
+Negative: virtual object (behind lens) \\
+$d_i$: image distance \\
+Positive: real image (behind lens) \\
+Negative: virtual image (in front of lens) \\
+$f$: focal length \\
+Positive: convex (converging) lens \\
+Negative: concave (diverging) lens
+\subsubsection*{Magnification equation}
+$m \equiv \frac{h_{i}}{h_{o}} = - \frac{d_{i}}{d_{o}}$ \\
+$h_{o}$: object height \\
+$h_{i}$: image height, $(-ve) \rightarrow$ inverted image \\
+$m$ has same sign as $h_{i}$, $|m|<1 \rightarrow$ reduced, $|m|>1 \rightarrow$ enlarged.
+\subsubsection*{Combination of Lenses}
+$m_{total} = m_1 * m_2$ \\
+$m_i$: magnification by $i$-th lens
+\subsubsection*{Human Eyes}
+Focal length of normal human eye $\approx$ 2.5cm \\
+Near point of normal human eye $\approx$ 25cm \\
+Far point of normal human eye : $\infty$ \\
+When you are \textbf{near-sighted}: \\
+1. Far point is too close \\
+2. Need concave (diverging) lens to create an virtual image at that abnormal far point (which is $< \infty$), which acts as new object for your eye \\
+When you are \textbf{far-sighted}: \\
+1. Near point is too far \\
+2. Need convex (converging) lens to create an virtual image at that abnormal near point (which is $> 25$cm), which acts as new object for your eye
+\subsubsection*{Refractive Power of Lens}
+$P = \frac{1}{f}$, Unit: Diopter, $(m^{-1})$ \\
+$f$: focal length of lens
+\subsubsection*{Magnifying Glass}
+\textbf{Angular size}, \\
+$\tan{\theta} = \frac{h_o}{d_o} \Rightarrow \theta \approx \frac{h_o}{d_o} \textrm{ or } \theta \approx \frac{h_o}{N}$ \\
+$h_o$: object height \\
+$N$: near point distance \\
+As object is moved closer to eye, $\theta$ decreases. \\
+Also, \\
+$\theta \approx \frac{h_i}{d_i} \approx \frac{h_o}{d_o}$, (similar triangles) \\
+\textbf{Angular Magnification}, \\
+$M = \frac{\theta}{\theta_o}$ \\
+$\theta_o$: angular size of object, (without magnifying glass) \\
+$\theta$: angular size of image, (with magnifying glass) \\
+$M = N(\frac{1}{f} - \frac{1}{d_i})$ \\
+$\Rightarrow M = N(\frac{1}{f} - \frac{1}{-\infty})$ for virtual image at $\infty$ \\
+$\Rightarrow M = N(\frac{1}{f} - \frac{1}{-N})$ for virtual image at $N$ \\
+\line(1,0){290}
+
+\subsection*{Lecture 14: Interference of Light}
+\textbf{Principle of superposition} \\
+Constructive superposition: $\lambda_2 - \lambda_1 = m\lambda, ~m=0,1,2,\ldots$ \\
+Destructive superposition: $\lambda_2 - \lambda_1 = (m+\frac{1}{2})\lambda, ~m=0,1,2,\ldots$
+\subsubsection*{Double Slit Interference}
+Optical Path Difference: $\delta = d\sin{\theta}$
+\subsubsection*{Constructive Interference (Bright Fringes)}
+$\delta = d\sin{\theta} = m\lambda, ~m=0,1,2,\ldots$
+\subsubsection*{Destructive Interference (Dark Fringes)}
+$\delta = d\sin{\theta} = (m+\frac{1}{2})\lambda, ~m=0,1,2,\ldots$ \\
+$d$: slit-spacing \\
+$\theta$: angle between ray and norm \\
+\textbf{*Center Bright} is $m=0$, \textbf{1st Bright} usually means $m=1$ \\
+\textbf{*First Dark} from Center Bright is $m=0$ \\
+\textbf{Small Angle Approx. To Find Bright/Dark Fringes} \\
+Bright: $\theta \approx \frac{m\lambda}{d}, ~y \approx \frac{m\lambda L}{d}$ $\vline$ Dark: $\theta \approx (m+\frac{1}{2})\frac{\lambda}{d}, ~y \approx (m+\frac{1}{2})\frac{\lambda L}{d}$ \\
+$L$: distance between slit and screen
+\subsubsection*{Thin Film Interference}
+\begin{tablehere}
+%\centering
+%\footnotesize
+\begin{tabular} {| c | c | c |}
+\hline
+\textbf{Reflection} & \textbf{Distance} & \textbf{Optical path diff}\\
+\hline
+Ray 1 $0(n_0 > n_1)$ 					&	0			&	$\delta_1 = 0+0 (n_0 > n_1)$ \\
+Ray 1 $\frac{\lambda}{2}(n_0 < n_1)$ 	&	0			&	$\delta_1 = \frac{\lambda}{2}+0 (n_0 < n_1)$ \\
+Ray 2 $0(n_1 > n_2)$ 					&	$2n_1 t$	&	$\delta_1 = 0+2n_1 t (n_1 > n_2)$ \\
+Ray 2 $\frac{\lambda}{2}(n_1 < n_2)$ 	&	$2n_1 t$	&	$\delta_1 = \frac{\lambda}{2}+2n_1 t (n_1 < n_2)$ \\
+\hline
+\end{tabular}
+\end{tablehere} \\
+$\delta = | \delta_1 - \delta_2| $: optical path difference between Ray 1 and 2 \\
+$\delta_1$: optical path difference between Ray 1 and incident ray \\
+$\delta_2$: optical path difference between Ray 2 and incident ray \\
+Constructive: $\delta = m\lambda$, Destructive: $\delta = (m+\frac{1}{2})\lambda$, $m=0,1,\ldots$
+\line(1,0){290}
+
+\subsection*{Lecture 15: Diffraction and Grating}
+\subsubsection*{Single Slit Diffraction - Locating Minima (Dark Fringe)}
+$\sin{\theta} = \frac{m\lambda}{W}, ~y = \frac{m\lambda L}{W}$, $m=1,2,3,\ldots$ \\
+*\textbf{First Dark} is $m=1$ (Notice the difference between Double Slit)
+\subsubsection*{Diffraction from Circular Aperture}
+$\sin{\theta} = 1.22\frac{\lambda}{D}$ \\
+$\rightarrow$\textbf{First minimum} of a circular diffraction pattern \\
+$D$: diameter of circular aperture
+\subsubsection*{Resolving Power (Rayleigh's Criterion)}
+$\theta_{min} = 1.22 \frac{\lambda}{D}$, \textbf{NOTE}: $\theta_{min}$ will be in Radians \\
+$\theta_{min}$: angle between the 2 objects / light sources \\
+$\lambda$: the wavelength \textit{in} the region between the aperture and screen \\
+Two point objects are \textit{just resolved} when the 1st dark fringe in the diffraction pattern of one falls directly on the central bright fringe in the diffraction pattern of the other. So, to see 2 objects distinctively, we need: \\
+$\theta_{objects} \geq \theta_{min}$, and $\theta_{objects} \approx \frac{d}{y}$ \\
+$d$: distance between objects \\
+$y$: distance from objects to the aperture
+\subsubsection*{Convert Radians to Degree}
+$\theta^{\circ}=\frac{\theta \text{ rad} \times 180^{\circ}}{\pi}$
+\subsubsection*{Diffraction Grating}
+$d \sin{\theta} = m\lambda$ \\
+*Condition for constructive interference \\
+$\theta = \sin^{-1}{\frac{m\lambda}{d}}, ~y = L \tan{\theta}$ \\
+*\textbf{Center Bright} fringe is $m=0$ \\
+*As no. of slits per unit length of grating $\uparrow$, fringes get narrower and brighter \\
+$m$: $m=0,1,2,\ldots$ \\
+$y$: distance from center fringe to $i$-th fringe \\
+$L$: distance from grating to screen \\
+\line(1,0){290}
+
+\subsection*{Lecture 16: Photoelectric Effect}
+\subsubsection*{Photoelectric Equation}
+$K_{max} = hf - W_0 \Rightarrow K_{max} = h\frac{c}{\lambda} - W_0$ (units: $eV$) \\
+$eV$: electron volt, 1 electron charge times 1 V \\
+$K_{max}$: max kinetic energy of released electrons \\
+$h$: \textbf{Planck's constant} = $6.63 \times 10^{-34} J s$ (Joules second)\\
+$f$: frequency of light source \\
+$W_0$: work function of the metal surface (minimum energy needed to free electron) \\
+$f_0 = \frac{W_0}{h}, \lambda_0 = \frac{hc}{W_0}$ \\
+$f_0, \lambda_0$: cutoff frequency/wavelength (if $\lambda_0 \uparrow$ then $W_0\downarrow$, no photoelectric) \\
+*Remember: $K_{max}$ depend \textbf{only} on frequency and work function, not intensity \\
+*Photon energy $>$ $W_0$ $\rightarrow$ electron freed \\
+*Photon energy $<$ $W_0$ $\rightarrow$ electron not freed regardless of intensity
+\subsubsection*{Stopping Potential}
+$eV_0 = K_{max}, V_0 = \frac{h}{e}(f - f_0)$
+\subsubsection*{de Broglie's Matter Wave}
+$\lambda = \frac{h}{p} = \frac{h}{mv} = \frac{h}{\sqrt{2meV}}$ \\
+$p$: momentum \\
+$m$: mass \\
+$v$: velocity \\
+$e$: electron charge \\
+$V$: potential \\
+*Note: $eV$ together may mean, for e.g. 10.2 eV. Need to multiply by electron charge
+\subsubsection*{Finding No. of photons per second}
+$\frac{\#photons}{second} = \frac{energy/second}{energy/photon} = \frac{power}{energy/photon} = \frac{power}{hf}$ \\
+\line(1,0){290}
+
+\subsection*{Lecture 17: Atomic Physics}
+\textbf{Line Spectra} \\
+Absorption Spectrum: \\
+Bright background with dark lines (Photons were absorbed) \\
+Emission Spectrum: \\
+Dark background with bright lines (Photons were emitted)
+\subsubsection*{Balmer Series (Hydrogen)}
+$\frac{1}{\lambda} = R_H (\frac{1}{2^2} - \frac{1}{n^2}), ~n=3,4,5,\ldots$ \\
+*When $n=3$, $\lambda$ is longest.
+\subsubsection*{Lyman Series (Ultraviolet)}
+$\frac{1}{\lambda} = R_H (\frac{1}{1^2} - \frac{1}{n^2}), ~n=2,3,4,\ldots$
+\subsubsection*{Paschen Series (Infrared)}
+$\frac{1}{\lambda} = R_H (\frac{1}{3^2} - \frac{1}{n^2}), ~n=4,5,6,\ldots$
+\subsubsection*{Brackett Series (Infrared)}
+$\frac{1}{\lambda} = R_H (\frac{1}{4^2} - \frac{1}{n^2}), ~n=5,6,7,\ldots$
+\subsubsection*{Pfund Series (Infrared)}
+$\frac{1}{\lambda} = R_H (\frac{1}{5^2} - \frac{1}{n^2}), ~n=6,7,8,\ldots$
+\subsubsection*{In general... (for the spectral lines in Hydrogen atom)}
+$\frac{1}{\lambda} = R_H (\frac{1}{n_f^2} - \frac{1}{n_i^2}), ~n\in \mathbb{Z}^+,n_i > n_f$ \\
+$R_H$: Rydberg Constant, $1.097 \times 10^7 m^{-1}$
+\subsubsection*{Bohr's Model of Atom}
+Intuition: \\
+Electron jump from level $n=i$ to $n=i-1 \rightarrow$ emits photons \\
+Electron jump from level $n=i$ to $n=i+1 \rightarrow$ absorbs photons
+\subsubsection*{Bohr's Angular Momentum Quantization}
+$2 \pi r = n\lambda ~\&~ \lambda = \frac{h}{p} \Rightarrow mrv = \frac{nh}{2 \pi}$
+\subsubsection*{Planck-Einstein / Planck's relation}
+$E = hf = h \frac{c}{\lambda} \Rightarrow \lambda = \frac{hc}{E}$ \\
+$h$: Planck's constant, $6.63 \times 10^{-34} J s$ \\
+$f$: frequency \\
+$E$: energy, so can be in $eV$ or $J$. (Recall equation in Lect 16)
+\subsubsection*{Energy Levels of Hydrogen Atom}
+$E_n = - \frac{1}{2} \frac{1}{4 \pi \epsilon_0} \frac{e^2}{n^2 a_0} = - \frac{13.6 \textrm{ eV}}{n^2}, ~(a_0 = \epsilon_0 \frac{h^2}{\pi m e^2}, ~r_n = n^2 a_0)$ \\
+$a_0$: smallest orbit radius, \textit{Bohr radius} = 0.0529nm \\
+$r_n$: general expression for radius of any orbit \\
+*Lowest energy level or \textit{ground state} $\rightarrow n=1$ \\
+*\textit{First excited state} $\rightarrow n=2$, and so on... \\
+*Highest level, electron removed $\rightarrow n=\infty, E=0$
+\subsubsection*{Some Intuition about Spectral Lines}
+When there is a transition from (e.g.) $n=3$ to $n=2$, then there is a wavelength for that photon(s). So for e.g. electron excited to $n=3$. $(3\rightarrow 2), (2\rightarrow 1) ~\& ~ (3\rightarrow 1)$ are spectral lines.
+\subsubsection*{Energy Levels and Spectrum}
+$\frac{1}{\lambda} = R_H |\frac{1}{n_f^2} - \frac{1}{n_i^2}|$ \\
+*Longest $\lambda$: e.g. $\lambda_{32} = \frac{hc}{E_3 - E_2}$ (Balmer series) \\
+*Shortest $\lambda$: e.g. $\lambda_{\infty 2}$ (Balmer series)
+\subsubsection*{In General, when there's $Z$/Protons involved..}
+$E_n = - \frac{1}{4 \pi \epsilon_0} \frac{Z^2 e^2}{2n^2 a_0} = - \frac{Z^2 (13.6 \textrm{ eV})}{n^2}, (r_n = \frac{n^2 a_0}{Z})$ \\
+$Z$: number of protons in nucleus \\
+$\Rightarrow \frac{1}{\lambda} = Z^2 R_H |\frac{1}{n_f^2} - \frac{1}{n_i^2}|$ \\
+\line(1,0){290}
+\end{multicols}
+Converging lenses
+\begin{tabular}{|l|l | l| l |}
+\hline
+	$d_o<f$		& 	Up. 	& 	Mag. & Virt.\\
+	$d_o=f$		&	$-$ 	&	$-$  &	$-$	\\
+	$d_o=2f$	&	Inv.	&	Same & Real	\\
+	$d_o>f$		&	Inv.	&	Dim. & Real	\\
+\hline
+\end{tabular}
+\end{document}

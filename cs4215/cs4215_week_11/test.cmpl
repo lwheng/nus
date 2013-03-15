@@ -1,0 +1,2 @@
+thread print 1+1 end;
+thread print 1/0 end

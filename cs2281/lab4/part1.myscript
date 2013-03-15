@@ -1,0 +1,3 @@
+# script for part1
+/bin/echo1
+/bin/ls -al

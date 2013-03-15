@@ -1,0 +1,196 @@
+private static float kneserNey(String fromTag, String toTag) {
+		// To smooth POS transitions i.e. P(T_i+1 | T_i)
+		if (posTransitions[posTagsToIndex.get(fromTag)][posTagsToIndex
+				.get(toTag)] > 0) {
+
+			// Get C(fromTag)
+			float C_fromTag = 0;
+			for (int i = 0; i < posTransitions[posTagsToIndex.get(fromTag)].length; i++) {
+				C_fromTag += posTransitions[posTagsToIndex.get(fromTag)][i];
+			}
+
+			// Get C(fromTag -> toTag)
+			float C_fromTag_toTag = posTransitions[posTagsToIndex.get(fromTag)][posTagsToIndex
+					.get(toTag)];
+
+			return (C_fromTag_toTag - D) / (C_fromTag);
+		} else {
+			// Compute numerator
+			// |set of fromTag' that has C(fromTag' -> toTag) > 0|
+			// fromTag' != fromTag
+			float numerator = 0;
+			Set<String> setNumerator = new HashSet<String>();
+			for (int i = 0; i < posTransitions[0].length; i++) {
+				if (posTransitions[i][posTagsToIndex.get(toTag)] > 0) {
+					setNumerator.add(indexToPosTags.get(i));
+				}
+			}
+			numerator = setNumerator.size();
+
+			// Computer denominator
+			float denominator = 0;
+			Set<String> setDenominator = new HashSet<String>();
+			for (int i = 0; i < posTransitions[0].length; i++) {
+				for (int j = 0; j < posTransitions[0].length; j++) {
+					if (posTransitions[j][i] > 0) {
+						setDenominator.add(indexToPosTags.get(j));
+					}
+				}
+				denominator += setDenominator.size();
+				setDenominator.clear();
+			}
+
+			// Compute alpha(fromTag)
+			// alpha(fromTag) = (1 - X)/(Y)
+			float alpha = 0;
+			// Compute X
+			float X = 0;
+			Set<String> X_wk = new HashSet<String>();
+			for (int i = 0; i < posTransitions[0].length; i++) {
+				if (posTransitions[posTagsToIndex.get(fromTag)][i] > 0) {
+					X_wk.add(indexToPosTags.get(i));
+				}
+			}
+			float C_wk_minus_1 = 0;
+			for (int i = 0; i < posTransitions[posTagsToIndex.get(fromTag)].length; i++) {
+				C_wk_minus_1 += posTransitions[posTagsToIndex.get(fromTag)][i];
+			}
+			X = (D / C_wk_minus_1) * X_wk.size();
+
+			// Compute Y
+			// Y = A / B
+			float Y = 0;
+			float A = 0;
+			float B = 0;
+			Set<String> setA = new HashSet<String>();
+			Set<String> setB = new HashSet<String>();
+			// Compute A
+			for (int i = 0; i < posTransitions[0].length; i++) {
+				if (posTransitions[posTagsToIndex.get(fromTag)][i] == 0) {
+					for (int j = 0; j < posTransitions[0].length; j++) {
+						if (posTransitions[j][i] > 0) {
+							setA.add(indexToPosTags.get(j));
+						}
+					}
+					A += setA.size();
+					setA.clear();
+				}
+			}
+			// Compute B
+			for (int i = 0; i < posTransitions[0].length; i++) {
+				for (int j = 0; j < posTransitions[0].length; j++) {
+					if (posTransitions[j][i] > 0) {
+						setB.add(indexToPosTags.get(j));
+					}
+				}
+				B += setB.size();
+				setB.clear();
+			}
+			Y = A / B;
+			// alpha = (1 - X) / Y;
+			alpha = X / Y;
+			return alpha * (numerator / denominator);
+		}
+	}
+
+	private static float observationLikelihood(String observation, String tag) {
+
+		// To smooth observation likelihood i.e. P(w_i | T_i)
+		Hashtable<String, Integer> tagDistribution = distribution.get(tag);
+		if (tagDistribution.containsKey(observation)) {
+			// C(o,t) > 0
+
+			// Get C(o,t)
+			float C_o_t = tagDistribution.get(observation);
+
+			// Get C(t)
+			float C_t = 0;
+			Enumeration e = tagDistribution.keys();
+			while (e.hasMoreElements()) {
+				C_t += tagDistribution.get(e.nextElement());
+			}
+
+			return (C_o_t - D) / (C_t);
+
+		} else {
+			// C(o,t) == 0
+
+			// Compute numerator
+			float numerator = 0;
+			Set<String> setNumerator = new HashSet<String>();
+			Hashtable<String, Integer> hashNumerator;
+			for (String posTag : distribution.keySet()) {
+				hashNumerator = distribution.get(posTag);
+				if (hashNumerator.containsKey(observation)) {
+					setNumerator.add(posTag);
+				}
+			}
+			numerator = setNumerator.size();
+
+			// Compute denominator
+			float denominator = 0;
+			for (String o : vocab) {
+				Set<String> setDenominator = new HashSet<String>();
+				Hashtable<String, Integer> hashDenominator;
+				for (String posTag : distribution.keySet()) {
+					hashDenominator = distribution.get(posTag);
+					if (hashDenominator.containsKey(o)) {
+						setDenominator.add(posTag);
+					}
+				}
+				denominator += setDenominator.size();
+				setDenominator.clear();
+			}
+
+			// Compute alpha(tag)
+			// alpha(tag) = (1 - X)(Y)
+			float alpha = 0;
+			// Compute X
+			float X = 0;
+			Set<String> X_o = new HashSet<String>();
+			Hashtable<String, Integer> hashX;
+			hashX = distribution.get(tag);
+			X_o = hashX.keySet();
+			float C_t = 0;
+			for (String o : hashX.keySet()) {
+				C_t += hashX.get(o);
+			}
+			X = (D / C_t) * X_o.size();
+
+			// Compute Y
+			// Y = A / B
+			float Y = 0;
+			float A = 0;
+			float B = 0;
+			Set<String> setA = new HashSet<String>();
+			Set<String> setB = new HashSet<String>();
+			Hashtable<String, Integer> hashY;
+			hashY = distribution.get(tag);
+			Set<String> t_seen = hashY.keySet();
+			Set<String> t_not_seen = vocab;
+			for (String o : t_seen) {
+				t_not_seen.remove(o);
+			}
+			for (String o : t_not_seen) {
+				for (String posTag : distribution.keySet()) {
+					if (distribution.get(posTag).containsKey(o)) {
+						setA.add(posTag);
+					}
+				}
+				A += setA.size();
+				setA.clear();
+			}
+			for (String v : vocab) {
+				for (String posTag : distribution.keySet()) {
+					if (distribution.get(posTag).containsKey(v)) {
+						setB.add(posTag);
+					}
+				}
+				B += setB.size();
+				setB.clear();
+			}
+			Y = A / B;
+			alpha = X / Y;
+			return alpha * (numerator / denominator);
+		}
+	}

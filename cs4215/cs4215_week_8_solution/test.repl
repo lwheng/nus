@@ -1,0 +1,4 @@
+let x = [First: [], Second: []]
+in
+  x.First := []
+end

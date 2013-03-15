@@ -1,0 +1,1 @@
+stream = zipWith (*) [0..] alt where alt = 1:(-1):alt

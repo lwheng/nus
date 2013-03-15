@@ -1,0 +1,16 @@
+let n = 5 in
+	let calc = class
+					method Fact(x) ->
+						if x = 0 then 1
+						else
+							x * this.Fact(x - 1)
+						end
+					end
+				end
+	in
+		let obj = (new calc)
+		in
+			obj.Fact(n)
+		end
+	end
+end
