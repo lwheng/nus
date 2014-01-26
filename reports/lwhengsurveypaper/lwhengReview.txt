@@ -1,0 +1,92 @@
+Hi Low Wee:
+
+I've skimmed over your UROP lit review.  In general your UROP review
+is a bit unfinished and needs quite a bit more polish.  I hope you
+have some time to devote to it over the weekend.  
+
+I give some specific comments below, but you may also want to solict
+feedback from your fellow WING UROP friends.  
+
+Your thesis has a lot of explicit structure, but having section,
+subsection headers every couple of paragraphs is intrusive and breaks
+reading flow.  I would still retain them in your (LaTeX) comments and
+in your organization but you don't need them in the text itself.  I
+recommend trying to do with only section headers -- if you read other
+work, you'll see that often they have the same implicit headers as you
+put explicitly, but since it is easily inferred, the reader can
+concentrate on reading your text instead of looking at its
+organization.
+
+Same goes for footnotes.  If possible, use less footnotes as it breaks
+text flow.  When I was starting to write technical work, I also used
+these liberally and was told not to for the above reason.  
+
+For "How it's related", you should think about weaving these into a
+coherent story.  Having a critique of each work is good -- but it's
+just a starting point.  A lit review needs to collapse and organize
+these individual criticisms into a coherent argument.  In your case,
+you have organized things at a high level with respect to supervised
+or unsupervised techniques, which implies that you are going to
+critique the works based on their level of supervision.
+
+For your subsequent work, you need to think about how it relates to
+your project.  Your final UROP literature review's organization should
+reflect the strengths of your own work.  Say you work on getting a WSD
+algorithm that works in real time, then you would discuss more about
+the run-time and memory requirements of existing models as a weakness.
+It's good that you review Wikipedia related works as this will help
+motivate your approach using Wiktionary. You don't have to worry about
+this for now but do think about this for the next semester.
+
+P1:
+- Omit footnotes.  The point of your text is that there is different
+  meanings involved, not the actual definitions.  So you can just
+  remove them; it's not relevant.
+
+P2:
+- Use a citation for Micheal Lesk's algorithm
+- Describe the approaches in the list environment itself.  Use a
+  description list.  E.g. 1. Dictionary \& Knowledge-based: This
+  method uses ...., it is exemplified in work by X and Y \cite{...}
+- For a short 6-10 page article, 1-3 sentences of navigation is
+  sufficient.  Only describe the structure of your article that is
+  different.  E.g., "We will conclude in the last section" is a
+  vacuous sentence.
+
+P3 - You can simplify or re-annotate information drawn from Wikipedia.
+The hyperlink annotation you use is Wikipedia's internal (MediaWiki)
+method of showing hyperlink target and anchor text.  
+
+P4
+- L1 - it's bottleneck as opposed to bottle
+- I think you can compress the Wikipedia work discussion to a single
+  paragraph, rather than single page.
+
+P5 
+- Omit footnote references to popular search engines.  Doubtful
+  whether you'll have an SoC examiner that doesn't know the URLs to
+  these services.
+- Did you misspell Gutenburg?  Please spell check your document.
+- Use Section 2.2 instead of the naked reference.
+- Your comparison here discusses surface issues more than more deep
+  technical issues.  It's more important to say and criticise the
+  techniques (i.e., the algorithm itself) rather than the data or
+  input sources.
+
+P6 
+- Your conclusion follows the organization into Supervised and
+  Unsupervised.  While this is good, the following things in common
+  don't follow well from this dichotomy.  You said that unsupervised
+  techniques all use web corpora, but why is this commonality
+  important?  Probably (like above) you should discuss the importance
+  of the techniques instead.
+
+- Is 84 and 73% good performance?  If so, why?  If not state why not.
+  Your text states that this is good performance, but on the all-words
+  task, if the sense of every 4th word was wrong, that would be pretty
+  bad.  (In fact 73% is ok -- not great, as most words don't require
+  WSD and the baseline of selecting the majority sense works already
+  quite well).  You have to be more careful about how you discuss
+  performance.  Many papers evaluate their algorithms on different
+  datasets and even different WSD tasks, so it's not comparable.
+

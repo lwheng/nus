@@ -1,0 +1,143 @@
+\documentclass[12 pt]{article}
+\usepackage{amssymb,amsmath,amstext,amsgen,amsbsy,amsopn,amsfonts,graphicx,theorem, anysize,multicol,algorithm, algorithmic, CJKutf8, fancyhdr, lastpage, setspace}
+%\marginsize{0.5in}{0.5in}{0.5in}{0.5in}
+%\marginsize{left}{right}{top}{bottom}
+\usepackage[margin=1in]{geometry}
+\pagestyle{fancy}
+\fancyhf{}  %to remove everything
+%\lhead{Heng Low Wee}
+%\rhead{\today}
+\renewcommand{\headrulewidth}{0pt} % set the top line to 0pt to make invisible
+\cfoot{\thepage\ of \pageref{LastPage}}
+\onehalfspacing
+\begin{document}
+\bibliographystyle{acm}
+\title{CS2309 Survey Paper \\ Word Sense Disambiguation}
+\author{Heng Low Wee \\ U096901R}
+\date{}
+\maketitle
+\thispagestyle{fancy}
+\section{Introduction}
+\label{introduction}
+\paragraph{}
+Human languages are often ambiguous. For instance, in English, there are many words that possess multiple meanings depending on the context. These meanings are referred to as \textit{senses}. Let's look this two examples:
+\begin{enumerate}
+\item{She is interested in the \textit{interest} rates of the bank.}	
+\item{He developed an \textit{interest} in art.}
+\end{enumerate}
+\paragraph{}
+We can observe that the word \textit{interest} in the two sentences clearly have different meanings. It is easy enough for us, humans, to tell the meanings of the word in each sentence. This is because humans have that ``knowledge'' to tell the difference. In the first sentence, we saw words like \textit{bank} and \textit{rates} and we were able to relate accordingly. This thought process is just like how Weaver \cite{weaver} said, that if we only examine some text one word at a time, it is impossible to determine the meaning of it. To decide its meaning we must also look at its surrounding words. It is almost an unconscious act for a human to interpret the senses of words in a sentence. Machines, on the other hand, are not conscious, and don't have that ``knowledge''. Therefore, machines need to run through a series of analysis before they can tell the senses of the ambiguous word. This process is called \textit{Word Sense Disambiguation} (WSD).
+
+\paragraph{}
+Word Sense Disambiguation is one of the basic tasks in Natural Language Processing. Other tasks of NLP would include Word Segmentation, especially for languages that do not use spaces as a delimiter, for example Chinese. WSD has many applications in computational linguistics, like Machine Learning, Text Mining and Information Retrieval. It can also be used by search engines like Google, that being able to identify the senses, the search results would probably be more relevant to what the user had in mind.
+
+\subsection{Types of Word Sense Disambiguation}
+\paragraph{}
+There are four conventional types of WSD, they are:
+\begin{enumerate}
+\item{Dictionary-based \& knowledge-based \\
+This method uses formal dictionaries and lexical knowledge bases to disambiguate senses. These dictionaries provide the definitions of the possible senses of an ambiguous word, and then the definitions could be used in WSD algorithms. One example would be the Lesk Algorithm \cite{lesk}. The general assumption of Lesk algorithm is that words in a given environment (sentence, paragraph etc) will tend to share a common topic. Santanjeev \& Ted, instead of using standard dictionaries,  adapted the Lesk Algorithm to use WordNet \cite{wordnet} as a source of word senses. They conducted testings, and from their results they found that the adapted implementation outperformed the traditional Lesk approach with an accuracy double of the traditional one. Not only that they achieved better results with their algorithm, they also demonstrated that by integrating with a lexical database like WordNet, it would increase the rate of accuracy of WSD.}
+\item{Supervised \\
+Supervised WSD uses manually sense-tagged corpora. By doing so, these methods achieve a higher accuracy as compared to most unsupervised methods. However, supervised methods are subject to \textit{knowledge acquisition bottleneck} since they rely on manually sense-tagged corpora for training. Furthermore, these corpora are both labour-intensive and costly to create.}
+\item{Semi-supervised \\
+This method makes use of both labeled and unlabeled data. Similarly, it refers to using multiple untagged corpora to provide concurrent information to supplement a tagged corpus.}
+\item{Unsupervised \\
+Most challenging approach among all, this method may also be related to \textit{Word Sense Induction}, where senses could be induced by analyzing words in a given text. Unsupervised methods perform WSD without using any resource. To determine the senses, algorithms map the words to a collection of senses (e.g. WordNet). Mihalcea \cite{wikipedia} introduced an approach that uses the articles on Wikipedia, together with mapping of senses with a WordNet resource. It addressed the \textit{knowledge acquisition bottleneck} problem, as Wikipedia is updated by users all around the world on a regular basis. Also, it addresses the case where languages are evolving with new words and senses surfacing.}
+\end{enumerate}
+
+\subsection{Motivation}
+\paragraph{}
+I picked this topic mainly because of its benefits when applied into bilingual translation, for instance English-Chinese. Let's look at the example sentence, \textit{He developed an interest in art}. In this context, it is more related to the word ``hobby''. So when we translate the word \textit{interest} from English to Chinese, we want the output to be \begin{CJK}{UTF8}{gbsn}兴趣\end{CJK} (human interest), instead of \begin{CJK}{UTF8}{gbsn}利息\end{CJK} (simple interest). Being able to translate while retaining the original context would mean greater accuracy and relevancy in the translated text. Ultimately, this would encourage language learning as it is simpler and more straightforward when a language learner is aware of which is the correct sense to be used in a given context.
+
+\paragraph{}
+On the other hand, we are all aware that it is not uncommon to find new words or senses appearing on a regular basis. These words are not some made-up words, they are words that do, eventually, end up in Oxford Dictionary. For instance, some time ago, the word \textit{tweet} refers to the chirp of a young bird. Today, Twitter has given \textit{tweet} a brand new meaning. That is, a \textit{tweet} is a post on the social networking service Twitter. This goes to show that there is a need for WSD systems to be able to keep up to new words and senses.
+
+\subsection{Outline}
+\paragraph{}
+In this survey, specifically, we will look at Unsupervised WSD. We will also look at a disambiguation process's flexibility to handle new words and senses, as it is very common for new words and senses to be surfacing occasionally. Section \ref{literature} will cover three works related to WSD, and for each work some comments about the pros and cons. We will then conclude in Section \ref{conclusion}.
+
+\section{Literature}
+\label{literature}
+\subsection{Word Sense Disambiguation using Dependency Knowledge}
+\paragraph{}
+This approach described by Chen et al \cite{unsupervised} begins with the construction of a corpus. In the paper considered two possible text sources for corpus building. The two options are Electronic Text Collection and Web documents. The first option, even though professionally created and accurate, is old and lack of new words and senses used in modern English. Hence the authors picked the second option, even though the major concern is with data inconsistency. The procedure briefly, they sent ambiguous words to Web search engines to retrieve the relevant pages. These pages are cleaned, segmented and then parsed with a \textit{dependency parser}, Minipar \cite{minipar}, to retrieve the parsing trees. These trees are merged to form the \textit{context knowledge base} \cite{unsupervised}. Formulated into \textit{weighted directed graphs}, it is effective in telling the dependencies between the words in a given text, simply by computing the weights of the nodes in the graphs. Chen et al introduced the \textit{TreeMatching} function, which handles the weight assignments and score computations. A target sentence is passed into the WSD algorithm together with WordNet sense inventory and the context knowledge base built earlier. \textit{TreeMatching} then assigns weights to the nodes based on rules and dependency relation instances, and returns the score of a WordNet gloss that an ambiguous word was compared to. Subsequently, either the sense with the best score, or the first sense will be decided as the correct sense.
+
+\paragraph{}
+The algorithm is effective, and accurate in matching the dependency relations to determine the correct senses, as shown in the evaluation results \cite{unsupervised}. Even though it is an unsupervised method, its performance was approaching some supervised ones. However, before \textit{TreeMatching} can be performed, all the glosses and sentences have to be pre-processed into parsing trees, which takes a lot of time according to Chen et al. According to \cite{minipar}, Minipar was able to achieve 89\% precision for parsing sentences. One ``missing piece'' of the paper is, Chen et al mentioned that impact of the erroneous relations from the Minipar's parsing would be minimized with their WSD algorithm, but it was not explicitly defined how it actually did it.
+%\subsection{Word Sense Tagging using Parallel Corpora}
+%\label{parallel}
+%\paragraph{}
+%WSD systems that rely on manually sense-tagged corpora are likely to produce more reliable results. For that they also require high quality annotations. However, manual tagging is a process that is both labour intensive and costly to carry out. Furthermore, increasing the size of the corpus do not directly lead to an increase in accuracy. According to Yarowsky et al \cite{yarowsky}, it is very impractical to double the training corpora, because it only reduces error by 3 to 4\%. Therefore, we should consider automated sense-tagging.
+%
+%\paragraph{}
+%Diab \& Resnik described an automated annotation and sense-tagging approach by analyzing an ambiguous word's translation in a second language \cite{parallel}, for example, English and French. The first step, is to identify the target words in the source corpus, and their translations. Word alignment is performed, and so the positions of a target word in both languages are located and captured. These targets words are then grouped into \textit{target sets}. In each set, they considered all possible senses for each word and then tag a word with the sense that is most similar to all the other words. Finally, they made use of the sense tags in the target sets and then project them onto the corresponding words in French.
+%
+%\paragraph{}
+%The main advantage is probably that it attempts to eliminate the need to carry out manual sense-tagging and annotation. It would definitely reduce the cost needed to carry out these manual tasks. However, the automation might also bring about a reduction in the accuracy in the tagging and annotating.
+%
+%\paragraph{}
+%This work is highlighted because their approach involves the usage of parallel corpora, or in other words, two languages. This would be greatly advantageous if we wish to increase the relevancy and accuracy of bilingual translations, for instance English-Chinese. The general idea of their work is about sense-tagging another corpus using one that has already been sense-tagged. During the construction process, they are already ``mapping'' each word in the first language to the second language, this ``link'' would mean greater accuracy in translation.
+
+\subsection{Words Sense Disambiguation using Wikipedia}
+\label{wikipedia}
+\paragraph{}
+Manually created by users, Wikipedia articles are generally correct in terms of its contents. Wikipedia links, in the \textit{MediaWiki} syntax, on an article provide navigation to related pages. Some examples of these links are \textbf{[[bar(law)$|$bar]]} and \textbf{[[bar(counter)$|$bar]]}. The senses of the word \textit{bar}, namely \textit{law} and \textit{counter}, can be derived by extracting them from the annotated links. Mihalcea \cite{wikipedia} made use of this information and introduced a method to build a sense-tagged corpora using the occurrences of a given words. Mihalcea's approach begins with first extracting all paragraphs from Wikipedia that contain the occurrences of a given word. Then, the senses of each word are extracted, then mapped onto their corresponding WordNet senses. Then, in the disambiguation algorithm \cite{wikipedia}, a target text is tokenized, and each token is tagged with its POS information. Collocations are also identified. Then, local and topical features are extracted form the context of the ambiguous word. This set of features is similar to the one used by Ng \& Lee \cite{exemplar}.
+
+\paragraph{}
+This method would address the \textit{knowledge acquisition bottleneck} issue. This is because the dynamic nature of Wikipedia makes it extensible. Hence, using Wikipedia as a corpus source can ensure that it will be up-to-date and contain any new words or new senses. However, there might be data inconsistency. Various users might use different names for the same object or entity. For instance, \textit{handphone} and \textit{mobile phone}. This is also partly because of the fact that there are new words and senses emerging rapidly in today's modern languages.
+
+\paragraph{}
+One can observe that this approach would have the flexibility to handle new words and senses. For example, considering how popular Wikipedia is, any new word used by people, say \textit{tweet} (a post on Twitter), would most likely appear on Wikipedia much faster than any other formal dictionaries or lexical databases. We must, however, consider the fact that as the number of Wikipedia pages grow, it is necessary to re-construct the sense-tagged corpus in order to capture these new words and senses. Hence the design considerations should include \textit{expandability}.
+
+\subsection{Word Sense Disambiguation using the Noisy Channel Model}
+\label{noisychannel}
+\paragraph{}
+In this paper, the authors noted that the term ``unsupervised'' had been slightly misused. Unsupervised systems are supposed to be systems that do not directly use sense-tagged corpora for training. However, many unsupervised systems do use sense ordering and sense frequencies from the lexical database WordNet. According to \cite{noisychannel}, these systems should be classified as weakly-supervised or semi-supervised instead.
+
+\paragraph{}
+This approach for unsupervised WSD was based on the Noisy Channel Model. This model is a framework commonly used in spell checkers, machine translation and speech recognition. It can be used whenever a signal received does not uniquely identify the message being sent. Bayes' Law is used to identify the most probable intended message within the channel. The authors modeled each context, $C$, as a distinct channel. Then the senses, $S$, are modeled as the intended messages in the channel. The words, $W$, received would be the signal that is received. With that, they adapted the Bayes' formula, as follows:
+\begin{equation}
+\label{bayes}
+P(S|W,C) = \frac{P(W|S,C)P(S|C)}{P(W|C)}
+\end{equation}
+So essentially, to maximize the value of $P(S|W,C)$, $P(W|S,C)$ and $P(S|C)$ must be increased. To estimate the values of $P(W|S,C)$ and $P(S|C)$, they assumed that the distribution of words used to express a given sense is the same for all context, such that $P(W|S,C) = P(W|S)$. They used the WordNet sense frequencies to estimate $P(W|S)$, and a statistical language model, 5-gram model, to estimate $P(W|C)$.
+%Algorithm part intentionally left out??
+%To estimate the distribution of words that can be used for a given meaning, $P(W|S)$, they used WordNet sense frequencies, and to estimate the distribution of words that can be used for a given context, $P(W|C)$, a 5-gram model was used.
+
+\paragraph{}
+In their experiments the authors compared their system to some of the best supervised and unsupervised systems. It was found that this probabilistic approach of theirs was able to outperform all the unsupervised systems that were compared with. Recall that the authors had noted that some of all the unsupervised systems available should actually be considered as ``semi-supervised'' because of their reliance on sense-tagged corpora for training. In other words, their unsupervised WSD had outperformed some of the ``semi-supervised'' ones, which should be considered a remarkable feat. Also, the main contribution of this method is the reduction of the WSD problem into the estimation of two distributions: the distribution of words that can be used in a given sense [$P(W|S)$] and in a given context [$P(W|C)$].
+
+\section{Conclusion}
+\label{conclusion}
+\paragraph{}
+In this survey we touched on the field of \textit{Word Sense Disambiguation} (\textit{WSD}). WSD is a very challenging task because it involves working with the complexity of human languages. First formulated as a distinct computational task during the 1940s, WSD is one of the oldest problems in computational linguistics. Weaver \cite{weaver} wrote in his memorandum, that if we examine text \textit{one} word at a time, it is impossible to determine the meaning of it. Only by looking at its surrounding words then can one decide its meaning.
+%Among the four conventional approaches for WSD mentioned, \textit{Supervised} is undoubtly the most accurate in WSD. However, in order for Supervised to work reliably, it needs to work with a manually sense-tagged corpora, which is expensive to create or upgrade. Diab \& Resnik described a more practical method \cite{parallel} that uses a combination of an existing corpora, translations and word alignments to automate the creation of a sense-tagged corpora. Its advantage is it could be the automated solution to sense-tagging and annotation. For \textit{Unsupervised}, the approaches mentioned in Section \ref{wikipedia} and \ref{treematching} both share one thing in common: Web-based corpora. In both approaches, they adapted the Web-based corpora because it is dynamic and up-to-date. This mean their systems will be able to handle new words and new senses, which may help in overcoming the \textit{knowledge acquisition bottleneck}. However, there is one concern about retrieving senses information from such a large and open resource: Data inconsistency. But the authors of \cite{unsupervised} said that this problem would be negligible when using popular Web search engines to extract relevant Web pages.
+Related to our interest to improve bilingual translations by WSD, it is notable that Lefever \& Hoste \cite{crosslingual} had demonstrated Cross Lingual WSD using parallel corpora from Europarl\footnote{http://www.statmt.org/europarl/}. However, the corpora used were mainly in European languages, not applicable when the languages we are focusing on are English and Chinese.
+%There are many papers introducing methods to construct an English-Chinese parallel corpus (see \cite{Dalianis,sun,Baobao2004}).
+
+\paragraph{}
+In general, the characteristics mentioned in this survey are \textit{accuracy}, \textit{flexible} (to handle new words \& senses) and \textit{unsupervised}. For that, we have studied some approaches and techniques that may give rise to these characteristics in WSD.
+%Diab \& Resnik \cite{parallel} described a form of automated sense-tagging by analyzing an ambiguous word's translations in a second language. This introduces not only automation to sense-tagging, but also contributes to more \textit{accurate} translations between the languages in the parallel corpora.
+Chen et al \cite{unsupervised} demonstrated remarkable \textit{accuracy} in unsupervised WSD by using dependency knowledge. Despite being unsupervised, their method was competitive to the supervised methods, with performance approaching the supervised ones.
+To be \textit{flexible}, the general idea is to adapt a Web-based resource for sense-extraction. Mihalcea described using Wikipedia for WSD \cite{wikipedia}. Advantages include it being publicly accurate in its contents, and it being exposed to new words and senses added by articles' authors regularly. While data inconsistency might be an issue here, it is flexible enough to handle ambiguous words that may not yet appear on formal dictionaries.
+%As for \textit{unsupervised}, Chen et al \cite{unsupervised} introduced an approach that determines the correct sense by on dependency knowledge. Although unsupervised, Chen et al \cite{unsupervised} showed that its precision was pretty close to the supervised methods that were in their evaluation tests. As a whole, by integrating these techniques, a system would have accurate parallel corpora and word sense disambiguations, be adaptable to new words and senses in languages, and therefore, lead to improved bilingual translations.
+As for \textit{unsupervised}, Yuret et al \cite{noisychannel} noted that the term ``unsupervised'' was probably misused. ``Unsupervised'' was meant to refer to system that do not directly rely on sense-tagged corpora for training. However, most of the unsupervised systems available do so. They introduced a WSD method that was based on the Noisy Channel Model. In the end, they were able to reduce the WSD problem into a probabilistic one, performing estimations of two distributions.
+
+\paragraph{}
+Perhaps the next idea to consider is to go real-time for WSD. So far the above mentioned literatures did not touch on this idea, probably because of performance issues, for it can be easily inferred that the construction of large corpora could not possibly be achieved in a matter of seconds. While this poses yet another challenge not exclusive to the field of Word Sense Disambiguation, but as systems' performance are reaching new heights regularly, it should not be impossible in the near future.
+
+\bibliography{bibsource}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+

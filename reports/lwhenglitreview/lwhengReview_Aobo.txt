@@ -1,0 +1,26 @@
+I have some comments to share with you.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+1.1 Motivation:
+
+You give examples for homographs to explain what is word sense ambiguity, which is good.
+However, you can give more powerful examples which can show the relationship between this task 
+and some application such as machine translation.
+And a formal definition of word sense Disambiguation task is needed.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+1.3 Background
+
+Switch the structure to this form:
+subTitle 1
+    content
+subTitle 2
+    content
+
+give brief introduction to each kind of method 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2 Literature (the title may be changed to related work or something else) 
+
+You may highlight the ad/disadvantages
+The analysis to the methods could have be more theoretic.
+Some formulas and algorithm are needed.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+In Conclusion, you may mention some future work plans.

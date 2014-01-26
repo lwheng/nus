@@ -1,0 +1,58 @@
+\begin{thebibliography}{1}
+
+\bibitem{lesk}
+{\sc Banerjee, S., and Pedersen, T.}
+\newblock An adapted lesk algorithm for word sense disambiguation using
+  wordnet.
+\newblock In {\em CICLing '02: Proceedings of the Third International
+  Conference on Computational Linguistics and Intelligent Text Processing\/}
+  (London, UK, 2002), Springer-Verlag, pp.~136--145.
+
+\bibitem{unsupervised}
+{\sc Chen, P., Ding, W., Bowes, C., and Brown, D.}
+\newblock {A fully unsupervised word sense disambiguation method using
+  dependency knowledge}.
+\newblock {\em Proceedings of Human Language Technologies: The 2009 Annual
+  Conference of the North American Chapter of the Association for Computational
+  Linguistics on - NAACL '09}, June (2009), 28.
+
+\bibitem{wordnet}
+{\sc Fellbaum, C.}, Ed.
+\newblock {\em WordNet An Electronic Lexical Database}.
+\newblock The MIT Press, Cambridge, MA ; London, May 1998.
+
+\bibitem{crosslingual}
+{\sc Lefever, E., and Hoste, V.}
+\newblock Semeval-2010 task 3: cross-lingual word sense disambiguation.
+\newblock In {\em DEW '09: Proceedings of the Workshop on Semantic Evaluations:
+  Recent Achievements and Future Directions\/} (Morristown, NJ, USA, 2009),
+  Association for Computational Linguistics, pp.~82--87.
+
+\bibitem{minipar}
+{\sc Lin, D.}
+\newblock A dependency-based method for evaluating broad-coverage parsers.
+\newblock {\em Nat. Lang. Eng. 4}, 2 (1998), 97--114.
+
+\bibitem{wikipedia}
+{\sc Mihalcea, R.}
+\newblock Using wikipedia for automatic word sense disambiguation.
+
+\bibitem{exemplar}
+{\sc Ng, H.~T., and Lee, H.~B.}
+\newblock Integrating multiple knowledge sources to disambiguate word sense: an
+  exemplar-based approach.
+\newblock In {\em Proceedings of the 34th annual meeting on Association for
+  Computational Linguistics\/} (Morristown, NJ, USA, 1996), Association for
+  Computational Linguistics, pp.~40--47.
+
+\bibitem{weaver}
+{\sc Weaver, W.}
+\newblock Translation.
+\newblock In {\em Mimeographed\/} (1949), MIT Press, pp.~15--23.
+
+\bibitem{noisychannel}
+{\sc Yuret, D., and Yatbaz, M.~A.}
+\newblock {The Noisy Channel Model for Unsupervised Word Sense Disambiguation}.
+\newblock {\em Computational Linguistics 36}, 1 (Mar. 2010), 111--127.
+
+\end{thebibliography}

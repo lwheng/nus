@@ -1,0 +1,79 @@
+\begin{thebibliography}{10}
+
+\bibitem{lesk}
+{\sc Banerjee, S., and Pedersen, T.}
+\newblock An adapted lesk algorithm for word sense disambiguation using
+  wordnet.
+\newblock In {\em CICLing '02: Proceedings of the Third International
+  Conference on Computational Linguistics and Intelligent Text Processing\/}
+  (London, UK, 2002), Springer-Verlag, pp.~136--145.
+
+\bibitem{unsupervised}
+{\sc Chen, P., Ding, W., Bowes, C., and Brown, D.}
+\newblock {A fully unsupervised word sense disambiguation method using
+  dependency knowledge}.
+\newblock {\em Proceedings of Human Language Technologies: The 2009 Annual
+  Conference of the North American Chapter of the Association for Computational
+  Linguistics on - NAACL '09}, June (2009), 28.
+
+\bibitem{parallel}
+{\sc Diab, M., and Resnik, P.}
+\newblock An unsupervised method for word sense tagging using parallel corpora.
+\newblock In {\em ACL '02: Proceedings of the 40th Annual Meeting on
+  Association for Computational Linguistics\/} (Morristown, NJ, USA, 2002),
+  Association for Computational Linguistics, pp.~255--262.
+
+\bibitem{wordnet}
+{\sc Fellbaum, C.}, Ed.
+\newblock {\em WordNet An Electronic Lexical Database}.
+\newblock The MIT Press, Cambridge, MA ; London, May 1998.
+
+\bibitem{michaellesk}
+{\sc Lesk, M.}
+\newblock Automatic sense disambiguation using machine readable dictionaries:
+  how to tell a pine cone from an ice cream cone.
+\newblock In {\em SIGDOC '86: Proceedings of the 5th annual international
+  conference on Systems documentation\/} (New York, NY, USA, 1986), ACM,
+  pp.~24--26.
+
+\bibitem{minipar}
+{\sc Lin, D.}
+\newblock A dependency-based method for evaluating broad-coverage parsers.
+\newblock {\em Nat. Lang. Eng. 4}, 2 (1998), 97--114.
+
+\bibitem{wikipedia}
+{\sc Mihalcea, R.}
+\newblock Using wikipedia for automatic word sense disambiguation.
+
+\bibitem{exemplar}
+{\sc Ng, H.~T., and Lee, H.~B.}
+\newblock Integrating multiple knowledge sources to disambiguate word sense: an
+  exemplar-based approach.
+\newblock In {\em Proceedings of the 34th annual meeting on Association for
+  Computational Linguistics\/} (Morristown, NJ, USA, 1996), Association for
+  Computational Linguistics, pp.~40--47.
+
+\bibitem{hinrich}
+{\sc Sch\"{u}tze, H.}
+\newblock Automatic word sense discrimination.
+\newblock {\em Comput. Linguist. 24}, 1 (1998), 97--123.
+
+\bibitem{weaver}
+{\sc Weaver, W.}
+\newblock Translation.
+\newblock In {\em Mimeographed\/} (1949), MIT Press, pp.~15--23.
+
+\bibitem{yarowsky}
+{\sc Yarowsky, D., and Florian, R.}
+\newblock Evaluating sense disambiguation across diverse parameter spaces.
+\newblock {\em Nat. Lang. Eng. 8}, 4 (2002), 293--310.
+
+\bibitem{itmakessense}
+{\sc Zhong, Z., and Ng, H.~T.}
+\newblock It makes sense: A wide-coverage word sense disambiguation system for
+  free text.
+\newblock In {\em Proceedings of the ACL 2010 System Demonstrations\/}
+  (Morristown, NJ, USA, 2010), ACL '10, Association for Computational
+  Linguistics, pp.~78--83.
+
+\end{thebibliography}
